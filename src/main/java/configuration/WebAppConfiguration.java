@@ -1,6 +1,7 @@
 package configuration;
 
 import org.apache.tomcat.util.buf.UDecoder;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +13,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.UserDao;
-import service.Dao;
-import service.Daoimplementatioin;
+
+import seviceclasses.ServiceProviderDaoImplementation;
 import seviceclasses.UserDaoImplementation;
 
 
@@ -52,17 +54,19 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 	
 	}
 
-	@Bean
- public Dao getvi()
- {
-	 Dao da=new Daoimplementatioin(getDataSource());
-	 return da;
- }
+
 	@Bean
 	public UserDao getUserDao()
 	{
 		UserDao ud=new UserDaoImplementation(getDataSource());
 		return ud;
+	}
+	
+	@Bean
+	public ServiceProviderDao getServiceProviderDao()
+	{
+		ServiceProviderDao spd=new ServiceProviderDaoImplementation(getDataSource());
+		return spd;
 	}
 	
 	// adding static resources in project
