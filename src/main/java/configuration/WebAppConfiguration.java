@@ -22,10 +22,11 @@ import seviceclasses.UserDaoImplementation;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"configuration","controller","service","daointerfaceses","serviceclasses","pojoclasses"})
+@ComponentScan({"configuration","controller","daointerfaceses","serviceclasses","pojoclasses"})
 public class WebAppConfiguration extends WebMvcConfigurerAdapter
 {
 	
+	//========================================================================================
 	@Bean
 	public InternalResourceViewResolver getView()
 	{
@@ -34,6 +35,9 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 		ir.setSuffix(".jsp");
 		return ir;
 	}
+	
+	//==========================================================================================
+	
 	@Bean
 	 public DriverManagerDataSource getDataSource()
 	 {
@@ -46,7 +50,8 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 		 return ds;
 	 }
 	
-
+//===========================================================================================
+	
 	@Bean
 	public MultipartResolver multipartResolver() {
 		System.out.println("this is also done");
@@ -54,7 +59,8 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 	
 	}
 
-
+//=============================================================================================
+	
 	@Bean
 	public UserDao getUserDao()
 	{
@@ -62,6 +68,7 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 		return ud;
 	}
 	
+//==============================================================================================	
 	@Bean
 	public ServiceProviderDao getServiceProviderDao()
 	{
@@ -69,12 +76,13 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 		return spd;
 	}
 	
+	//==========================================================================
 	// adding static resources in project
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// TODO Auto-generated method stub
 			registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 		super.addResourceHandlers(registry);
 		}
-
+//===================================================================================
 
 }

@@ -4,12 +4,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ServiceProvider 
 {
-
+    private int sp_id;
 	private String fname;
 	private String lname;
-	private int mob_number;
+	private String mob_number;
 	private String email;
-	private int addar_number;
+	private String addar_number;
 	private String gender;
 	private String dateofbirth;
     private String specialization;
@@ -20,14 +20,21 @@ public class ServiceProvider
     private String state;
     private String high_qualification;
     private String university_name;
-    private int experiance;
-    private MultipartFile experiance_certificate;
-    private MultipartFile hq_certificate;
+    private String experiance;  
     private MultipartFile licence_certificate;
     private MultipartFile photo;
     private MultipartFile addar_image;
+    private MultipartFile qualification_certificate;
     private String user_name;
     private String pssword;
+    
+    
+	public int getSp_id() {
+		return sp_id;
+	}
+	public void setSp_id(int sp_id) {
+		this.sp_id = sp_id;
+	}
 	public String getFname() {
 		return fname;
 	}
@@ -40,10 +47,10 @@ public class ServiceProvider
 	public void setLname(String lname) {
 		this.lname = lname;
 	}
-	public int getMob_number() {
+	public String getMob_number() {
 		return mob_number;
 	}
-	public void setMob_number(int mob_number) {
+	public void setMob_number(String mob_number) {
 		this.mob_number = mob_number;
 	}
 	public String getEmail() {
@@ -52,10 +59,10 @@ public class ServiceProvider
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getAddar_number() {
+	public String getAddar_number() {
 		return addar_number;
 	}
-	public void setAddar_number(int addar_number) {
+	public void setAddar_number(String addar_number) {
 		this.addar_number = addar_number;
 	}
 	public String getGender() {
@@ -118,24 +125,13 @@ public class ServiceProvider
 	public void setUniversity_name(String university_name) {
 		this.university_name = university_name;
 	}
-	public int getExperiance() {
+	public String getExperiance() {
 		return experiance;
 	}
-	public void setExperiance(int experiance) {
+	public void setExperiance(String experiance) {
 		this.experiance = experiance;
 	}
-	public MultipartFile getExperiance_certificate() {
-		return experiance_certificate;
-	}
-	public void setExperiance_certificate(MultipartFile experiance_certificate) {
-		this.experiance_certificate = experiance_certificate;
-	}
-	public MultipartFile getHq_certificate() {
-		return hq_certificate;
-	}
-	public void setHq_certificate(MultipartFile hq_certificate) {
-		this.hq_certificate = hq_certificate;
-	}
+	
 	public MultipartFile getLicence_certificate() {
 		return licence_certificate;
 	}
@@ -165,6 +161,12 @@ public class ServiceProvider
 	}
 	public void setPssword(String pssword) {
 		this.pssword = pssword;
+	}
+	public MultipartFile getQualification_certificate() {
+		return qualification_certificate;
+	}
+	public void setQualification_certificate(MultipartFile qualification_certificate) {
+		this.qualification_certificate = qualification_certificate;
 	}
     
     

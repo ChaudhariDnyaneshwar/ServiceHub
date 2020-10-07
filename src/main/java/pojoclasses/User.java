@@ -2,7 +2,7 @@ package pojoclasses;
 
 public class User
 {
-
+     private int uid;
 	 private String fname;
 	 private String lname;
 	 private String mobilenumber;
@@ -17,7 +17,13 @@ public class User
 	 private String username;
      private String password;
 	
-     public String getFname() {
+     public int getUid() {
+		return uid;
+	}
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+	public String getFname() {
 		return fname;
 	}
 	public void setFname(String fname) {

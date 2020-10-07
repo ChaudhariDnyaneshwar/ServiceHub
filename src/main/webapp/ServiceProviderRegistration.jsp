@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
  <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
  
   <!-- decalaring spring variable for static resources -->
@@ -181,35 +181,26 @@
 
                 <label  for="exp" class="label-title">Experince Year *</label>
                 <select class="form-input" id="exp" name="experiance" >
-                  <option value="A">0</option>
-                  <option value="A">1</option>
-                  <option value="B">2</option>
-                  <option value="C">3</option>
-                  <option value="D">4</option>
-                  <option value="E">5</option>
-                  <option value="F">6</option>
-                  <option value="G">7</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
 
                 </select>
             </div>
            
-            <div class="form-group right" >
-                <label for="upload" class="label-title">Upload Experience certificate *</label>
-                <input type="file" id="upload" size="80" class="form-input" name="cexperiance">
-            </div>
-          </div>
   
-
-
-
-
-
         <!-- Highest And Licence Certificate -->
         <div class="horizontal-group">
-          <div class="form-group left" >
-            <label for="upload" class="label-title">Highest Qualification certificate *</label>
-            <input type="file" id="upload" size="80" name="hqcertificate">
+          <div class="form-group left">
+            <label for="Upload" class="label-title">qualification certificate *</label>
+            <input type="file" id="upload" size="80" name="qualification">
           </div>
+
           <div class="form-group right">
             <label for="Upload" class="label-title">Licence certificate *</label>
             <input type="file" id="upload" size="80" name="licence">
@@ -261,7 +252,7 @@
 
     </form>
 
-
+${msg}
   </body>
 
 </html>

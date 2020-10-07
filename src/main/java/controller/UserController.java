@@ -17,6 +17,8 @@ public class UserController {
 	@Autowired
 	 UserDao ud;
 	
+	//====================================================================================================
+	
 	@RequestMapping("/userRegistration")
 	  public ModelAndView registerUser(HttpServletRequest request)
 	  {
@@ -63,6 +65,6 @@ public class UserController {
 	     mv.setViewName("userregistration");
 		  return mv;
 	  }
-
+//================================================================================================
 
 }
