@@ -13,7 +13,8 @@
 <a href="getServiceProvider">Service Provider</a>||<br>
 <a href="Seviceprovider">Service provider Registration</a>| |<br>
 <a href="AddDesignation.jsp">Add Designation</a>||<br>
-<a href="getDesignation">Services for user</a>
+<a href="getDesignation">Services for user</a><br>
+<a href="sendMail?id=4&name=dnyaneshwar"> done</a>
 </h3>
 
 </body>

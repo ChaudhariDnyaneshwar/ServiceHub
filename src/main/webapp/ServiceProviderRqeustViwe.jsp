@@ -48,13 +48,13 @@
         <div class="col-lg-6">
       Image:<br><img width="200" height="150"  src='getSPImage_req?id=${list.sp_id}' class="img-thumbnail" >
        <br> Adhar card is:<br><img width="200" height="150"  src='getSpAdharImage_req?id=${list.sp_id}' class="img-thumbnail" >
-              <a href="acceptSpRequesta?id=${list.sp_id }" class="btn btn-success">ACCEPT</a>   
+              <a href="acceptSpRequesta?id=${list.sp_id}&mail=${list.email }" class="btn btn-success">ACCEPT</a>   
                  </div>
                  <div class="col-lg-6">
          Licences:<br><img width="200" height="150"  src='getSplicence_req?id=${list.sp_id}' class="img-thumbnail" >
       <br>Qualification:<br> <img width="200" height="150"  src='getSpQualification_req?id=${list.sp_id}' class="img-thumbnail" >
     <br><br>
-       <a href="RejectServiceProvider?id=${list.sp_id}" class="btn btn-danger">REJECT</a>   
+       <a href="RejectServiceProvider?id=${list.sp_id}&mail=${list.email }" class="btn btn-danger">REJECT</a>   
     </div>
        </div>
       </div>

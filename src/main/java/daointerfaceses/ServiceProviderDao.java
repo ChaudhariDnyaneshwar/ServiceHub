@@ -20,7 +20,7 @@ public interface ServiceProviderDao {
 	public Blob getspReqeustlicence(int id);
 	public Blob getspRequestAddarImage(int id);
 	public int rejectServiceProvider(int id);
-	public void acceptSpRequest(int id);
+	public int acceptSpRequest(int id);
 	public int deleteSrviceProvider(int id);
 	public  List<ServiceProvider> getDrelatedSp(String designation);
 

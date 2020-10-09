@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import daointerfaceses.DesignationDao;
+import daointerfaceses.EmailGenarateDao;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.UserDao;
 import pojoclasses.Designation;
+import pojoclasses.EmailGenerate;
 import pojoclasses.ServiceProvider;
 import pojoclasses.User;
 
@@ -34,6 +36,9 @@ public class AdminController {
 
 	@Autowired
 	DesignationDao dd;
+	
+	@Autowired
+	EmailGenarateDao egd;
 	//================================================================
 
 	@RequestMapping("/getServiceProvider")
@@ -159,10 +164,19 @@ public class AdminController {
 	 
 	 //==========================================================================================
 	 @RequestMapping("/RejectServiceProvider")
-	 public ModelAndView rejectServiceProvider(@RequestParam("id")int id)
+	 public ModelAndView rejectServiceProvider(@RequestParam("id")int id,@RequestParam("mail")String rmail)
 	 {
 		 ModelAndView mv=new ModelAndView();
-		 spd.rejectServiceProvider(id);
+		 int count=spd.rejectServiceProvider(id);
+		 if(count>0)
+		 {
+			 EmailGenerate eg=new EmailGenerate();
+			 eg.setReciption(rmail);
+			 eg.setSubject("regarding service hub verification");
+			 eg.setMessage("Sorry in your document verification process we got some fault.plse apply agin with valid douments..");
+		     egd.sendEmail(eg);
+		 }
+		 
 		 mv.setViewName("redirect:/spregistration_request");
 		 return mv;
 	 }
@@ -193,10 +207,18 @@ public class AdminController {
 	 //================================================================================================
 
     @RequestMapping("/acceptSpRequesta")
-    public ModelAndView acceptSpRequest(@RequestParam("id")int id)
+    public ModelAndView acceptSpRequest(@RequestParam("id")int id,@RequestParam("mail")String rmail)
     {
     	ModelAndView mv=new ModelAndView();
-    	spd.acceptSpRequest(id);
+    	int count=spd.acceptSpRequest(id);
+    	if(count>0)
+    	{
+    		EmailGenerate eg=new EmailGenerate();
+    		eg.setReciption(rmail);
+    		eg.setSubject("related to service hub registration");
+    		eg.setMessage("your verification is succeffully complited.Well come to the service Hub family...");
+    	  egd.sendEmail(eg);
+    	}
     	mv.setViewName("redirect:/spregistration_request");
     	return mv;
     }
@@ -225,8 +247,6 @@ public class AdminController {
     public ModelAndView getDesignation()
     {
     	ModelAndView mv=new ModelAndView();
-    	
-    	System.out.println("this is not work properly");
     	List<Designation> designation=dd.getDesignation();
     	mv.addObject("des",designation );
     	mv.setViewName("ServiceProviderRegistration");
@@ -242,4 +262,7 @@ public class AdminController {
     	mv.setViewName("redirect:/getServiceProvider");
     	return mv;
     }
+    
+    //========================================================================
+     
 }

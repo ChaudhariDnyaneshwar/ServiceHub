@@ -15,9 +15,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import daointerfaceses.DesignationDao;
+import daointerfaceses.EmailGenarateDao;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.UserDao;
 import seviceclasses.DesignationDaoImplementation;
+import seviceclasses.EmailGenarateDaoImplementation;
 import seviceclasses.ServiceProviderDaoImplementation;
 import seviceclasses.UserDaoImplementation;
 
@@ -93,5 +95,10 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 		super.addResourceHandlers(registry);
 		}
 //===================================================================================
-
+	@Bean
+	public EmailGenarateDao sendEmail()
+	{
+	  return new EmailGenarateDaoImplementation();
+	}
+//===================================================================================
 }

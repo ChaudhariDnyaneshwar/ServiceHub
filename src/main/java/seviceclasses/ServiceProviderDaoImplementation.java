@@ -206,12 +206,13 @@ List<ServiceProvider>	list=	jdbctemp.query("select * from service_provider",rowM
 	}
 
 	//===============================================================
-	public void acceptSpRequest(int id) {
+	public int acceptSpRequest(int id) {
 
 		String query="insert sp_final select * from service_provider where spId=?";
-		jdbctemp.update(query,id);
+		int count=jdbctemp.update(query,id);
 		String dquery="delete from service_provider where spId=?";
 		jdbctemp.update(dquery,id);
+		return count;
 	}
 
 	
