@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
  <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
- 
+ <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
   <!-- decalaring spring variable for static resources -->
  
  <spring:url var="css" value="/resources/css"></spring:url>
@@ -67,7 +67,16 @@
       <div class="horizontal-group">
           <div class="form-group right">
         <label for="email" class="label-title">Designation*</label>
-        <input type="text" id="email" class="form-input" name="design" placeholder="enter your designation" required="required">
+         <a href="des"></a>
+       <select name="design" class="form-input">
+       
+       <jstl:forEach items="${des}" var="desi">
+       <option>${desi.designation}</option>
+       </jstl:forEach>
+       
+       </select>
+       
+        
       </div>
       </div>
 

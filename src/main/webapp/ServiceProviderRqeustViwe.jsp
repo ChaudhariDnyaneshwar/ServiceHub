@@ -31,6 +31,7 @@
      <h4>adhar number is:: ${list.addar_number }</h4>
      <h4>gender is :${list.gender}</h4>
      <h4>date of birth is :${list.dateofbirth }</h4>
+     <h4> Designation is :${list.designation }</h4>
      <h4>specialization is:${list.specialization }</h4>
      <h4>office address is :${list.office_address }</h4>
      <h4>city is :${list.city }</h4>
@@ -47,9 +48,10 @@
         <div class="col-lg-6">
       Image:<br><img width="200" height="150"  src='getSPImage_req?id=${list.sp_id}' class="img-thumbnail" >
        <br> Adhar card is:<br><img width="200" height="150"  src='getSpAdharImage_req?id=${list.sp_id}' class="img-thumbnail" >
+              <a href="acceptSpRequesta?id=${list.sp_id }" class="btn btn-success">ACCEPT</a>   
                  </div>
                  <div class="col-lg-6">
-       <br>  Licences:<br><img width="200" height="150"  src='getSplicence_req?id=${list.sp_id}' class="img-thumbnail" >
+         Licences:<br><img width="200" height="150"  src='getSplicence_req?id=${list.sp_id}' class="img-thumbnail" >
       <br>Qualification:<br> <img width="200" height="150"  src='getSpQualification_req?id=${list.sp_id}' class="img-thumbnail" >
     <br><br>
        <a href="RejectServiceProvider?id=${list.sp_id}" class="btn btn-danger">REJECT</a>   

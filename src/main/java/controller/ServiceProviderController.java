@@ -44,7 +44,7 @@ public class ServiceProviderController {
 		String experiance = request.getParameter("experiance");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+	
 		
 		ServiceProvider sp=new ServiceProvider();
 		sp.setFname(fname);
@@ -63,14 +63,13 @@ public class ServiceProviderController {
 		sp.setHigh_qualification(qualification);
 		sp.setUniversity_name(univercity);
 		sp.setExperiance(experiance);
-		//sp.setHq_certificate(qcertificate);
 		sp.setQualification_certificate(qcertificate);
 		sp.setLicence_certificate(licence);
 		sp.setPhoto(photo);
 		sp.setAddar_image(adharimg);
 		sp.setUser_name(username);
 		sp.setPssword(password);
-		
+		sp.setDesignation(designation);
 		int a=spd.save(sp);
 		if(a>0)
 		{
@@ -83,5 +82,5 @@ public class ServiceProviderController {
 		mv.setViewName("ServiceProviderRegistration");
 		return mv;
 	}
-
+    //=========================================================================
 }

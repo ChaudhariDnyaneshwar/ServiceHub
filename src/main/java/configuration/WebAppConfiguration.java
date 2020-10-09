@@ -2,6 +2,7 @@ package configuration;
 
 import org.apache.tomcat.util.buf.UDecoder;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +14,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import daointerfaceses.DesignationDao;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.UserDao;
-
+import seviceclasses.DesignationDaoImplementation;
 import seviceclasses.ServiceProviderDaoImplementation;
 import seviceclasses.UserDaoImplementation;
 
@@ -74,6 +76,13 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 	{
 		ServiceProviderDao spd=new ServiceProviderDaoImplementation(getDataSource());
 		return spd;
+	}
+//=================================================================================
+    @Bean
+	public DesignationDao getDesignationdao()
+	{
+		DesignationDao da=new DesignationDaoImplementation(getDataSource());
+		return da;
 	}
 	
 	//==========================================================================

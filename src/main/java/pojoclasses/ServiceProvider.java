@@ -27,8 +27,15 @@ public class ServiceProvider
     private MultipartFile qualification_certificate;
     private String user_name;
     private String pssword;
+    private String designation;
     
     
+	public String getDesignation() {
+		return designation;
+	}
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
 	public int getSp_id() {
 		return sp_id;
 	}
