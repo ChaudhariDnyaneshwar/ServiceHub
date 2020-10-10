@@ -6,16 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body> 
-<h3>
-<a href="spregistration_request">service provider registration request</a>| |<br>
-<a href="getAllusers">all users</a>| |<br>
-<a href="getServiceProvider">Service Provider</a>||<br>
-<a href="Seviceprovider">Service provider Registration</a>| |<br>
-<a href="AddDesignation.jsp">Add Designation</a>||<br>
+<body>
+well come user here
 <a href="getDesignation">Services for user</a><br>
-<a href="sendMail?id=4&name=dnyaneshwar"> done</a>
-</h3>
-
 </body>
 </html>

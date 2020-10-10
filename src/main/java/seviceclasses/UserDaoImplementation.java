@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
@@ -70,5 +71,8 @@ public class UserDaoImplementation implements UserDao {
 	int count=jdbctemplate.update(query,id);
 		return count;
 	}
+
+//=======================================================================
+
 
 }

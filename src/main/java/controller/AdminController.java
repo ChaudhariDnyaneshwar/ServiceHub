@@ -20,10 +20,12 @@ import daointerfaceses.DesignationDao;
 import daointerfaceses.EmailGenarateDao;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.UserDao;
+import daointerfaceses.ValidationDao;
 import pojoclasses.Designation;
 import pojoclasses.EmailGenerate;
 import pojoclasses.ServiceProvider;
 import pojoclasses.User;
+import pojoclasses.Validation;
 
 @Controller
 public class AdminController {
@@ -39,6 +41,9 @@ public class AdminController {
 	
 	@Autowired
 	EmailGenarateDao egd;
+	
+	@Autowired
+	ValidationDao vd;
 	//================================================================
 
 	@RequestMapping("/getServiceProvider")
@@ -264,5 +269,25 @@ public class AdminController {
     }
     
     //========================================================================
-     
+     @RequestMapping("/adminLoginValidation")
+     public ModelAndView getAdminValidation(@RequestParam("uname")String uname,@RequestParam("pwd")String password)
+     {
+    	 ModelAndView mv=new ModelAndView();
+    	 Validation v=new Validation();
+    	 v.setUsername(uname);
+    	 v.setPassword(password);
+    	 int count=vd.adminValidation(v);
+    	 if(count>0)
+    	 {
+    		 mv.setViewName("AdminHome");
+    	 }
+    	 else
+    	 {
+    		 mv.addObject("msg","Enter valid user name and password");
+    		 mv.setViewName("AdminLogin");
+    	 }
+    	 return mv;		 
+     }
+    
+    
 }

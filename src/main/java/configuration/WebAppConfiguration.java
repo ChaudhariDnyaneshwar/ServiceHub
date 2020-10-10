@@ -18,10 +18,12 @@ import daointerfaceses.DesignationDao;
 import daointerfaceses.EmailGenarateDao;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.UserDao;
+import daointerfaceses.ValidationDao;
 import seviceclasses.DesignationDaoImplementation;
 import seviceclasses.EmailGenarateDaoImplementation;
 import seviceclasses.ServiceProviderDaoImplementation;
 import seviceclasses.UserDaoImplementation;
+import seviceclasses.ValidationDaoImplement;
 
 
 @Configuration
@@ -101,4 +103,11 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 	  return new EmailGenarateDaoImplementation();
 	}
 //===================================================================================
+@Bean
+ public ValidationDao getVaidation()
+ {
+	 ValidationDao vd=new ValidationDaoImplement(getDataSource());
+	 return vd;
+ }
+
 }

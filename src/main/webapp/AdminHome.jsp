@@ -7,11 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="">
-   
-  
+Wellcome Admine
+<a href="spregistration_request">service provider registration request</a>| |<br>
+<a href="getAllusers">all users</a>| |<br>
+<a href="getServiceProvider">Service Provider</a>||<br>
+| |<br>
+<a href="AddDesignation.jsp">Add Designation</a>||<br>
 
-</form>
+
 
 </body>
 </html>

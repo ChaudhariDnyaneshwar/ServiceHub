@@ -20,9 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 import daointerfaceses.DesignationDao;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.UserDao;
+import daointerfaceses.ValidationDao;
 import pojoclasses.Designation;
 import pojoclasses.ServiceProvider;
 import pojoclasses.User;
+import pojoclasses.Validation;
   
   
 @Controller
@@ -35,6 +37,9 @@ public class UserController {
 	
 	@Autowired
 	ServiceProviderDao spd;
+	
+	@Autowired
+	ValidationDao vd;
 	//====================================================================================================
 	
 	@RequestMapping("/userRegistration")
@@ -138,4 +143,29 @@ public class UserController {
 		InputStream inputstream=new ByteArrayInputStream(photo);
 		IOUtils.copy(inputstream, response.getOutputStream());
     }
+    
+    @RequestMapping("/userValidation")
+    public ModelAndView doUserLoginValidation(@RequestParam("uname")String uname,@RequestParam("pwd")String password)
+    {
+    	ModelAndView mv=new ModelAndView();
+    	int a=0;
+    	Validation v=new Validation();
+    	v.setUsername(uname);
+    	v.setPassword(password);
+    	a=vd.userValidation(v);
+    
+       if(a>0)
+       {
+    	   mv.setViewName("UserHome");
+       }
+       else
+       {
+    	mv.addObject("msg","plse enter valid user name and password");
+       	mv.setViewName("UserLogin");   
+       }
+    	System.out.println(a);
+    	
+    	return mv;
+    }
+    
 }
