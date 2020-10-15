@@ -13,6 +13,24 @@
 </head>
 
 <body>
+
+<%
+
+response.setHeader("Cache-Control"," no-cache,no-store,must-revalidate");//HTTP 1.0
+response.setHeader("Pragma","no-cache");//HTTP 1.0
+response.setHeader("Expires","0") ;//proxy server
+  String cuname=(String)session.getAttribute("cuname");
+  if(session.getAttribute("cuname")==null)
+	{
+	response.sendRedirect("UserLogin.jsp");
+	}
+	%>
+	<a href="UserlogOut">Logout</a>
+	well come ${cuname}
+
+
+
+
 <jstl:forEach items="${list}" var="list">
 <div class="container">
   
@@ -34,7 +52,7 @@
     </div>
     <div class="col-lg-6">
      Image:<br><img width="100" height="150"  src='AllSpForUserImg?id=${list.sp_id}' class="img-thumbnail" >
-   <br><br>    <a href="#" class="btn btn-info">communicate</a>
+   <br><br>    <a href="getAppointment?cuname=${cuname}&spuname=${list.user_name}"  class="btn btn-info">Appointment</a>
     </div>
     
     

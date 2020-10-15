@@ -11,6 +11,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+<body>
+
+<%
+response.setHeader("Cache-Control"," no-cache,no-store,must-revalidate");
+if(session.getAttribute("auname")==null)
+	{
+	response.sendRedirect("AdminLogin.jsp");
+	}
+	%>
+
+${auname}
+
 <div class="container">
   <h2>Striped Rows</h2>
   <p>The .table-striped class adds zebra-stripes to a table:</p>            
@@ -56,7 +68,7 @@
   </table>
 </div>
 
-<body>
+
 
 </body>
 </html>

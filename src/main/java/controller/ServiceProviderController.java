@@ -23,6 +23,30 @@ public class ServiceProviderController {
 	
 	@Autowired
 	ValidationDao vd;
+
+	 @RequestMapping("/ServiceProviderLogin")
+	 public ModelAndView validServiceProvider(@RequestParam("uname")String uname,@RequestParam("pwd")String pass)
+	 {
+		 ModelAndView mv=new ModelAndView();
+		 Validation v=new Validation();
+		 v.setUsername(pass);
+		 v.setPassword(uname);
+		 int a= vd.serviceProviderValidation(v);
+		 if(a>0)
+		 {
+			 mv.setViewName("ServiceProviderHome");
+		 }
+		 else
+		 {
+			 mv.addObject("msg","plase enter valid username and password");
+			 mv.setViewName("SeviceProviderLogin");
+		 }
+		 return mv;
+	 }
+		 
+
+	
+	
 	
 	@RequestMapping(value = "/ServiceProviderRegistration", method = RequestMethod.POST)
 	public ModelAndView getvew(HttpServletRequest request, @RequestParam("photo") MultipartFile photo,
@@ -88,26 +112,6 @@ public class ServiceProviderController {
 		return mv;
 	}
     //=========================================================================
- @RequestMapping("/ServiceProviderLogin")
- public ModelAndView validServiceProvider(@RequestParam("uname")String uname,@RequestParam("pwd")String pass)
- {
-	 ModelAndView mv=new ModelAndView();
-	 Validation v=new Validation();
-	 v.setUsername(pass);
-	 v.setPassword(uname);
-	 int a= vd.serviceProviderValidation(v);
-	 if(a>0)
-	 {
-		 mv.setViewName("ServiceProviderHome");
-	 }
-	 else
-	 {
-		 mv.addObject("msg","plase enter valid username and password");
-		 mv.setViewName("SeviceProviderLogin");
-	 }
-	 return mv;
- }
-	 
  
 	
 

@@ -13,6 +13,18 @@
 </head>
 
 <body>
+<% 
+
+response.setHeader("Cache-Control"," no-cache,no-store,must-revalidate");//HTTP 1.0
+response.setHeader("Pragma","no-cache");//HTTP 1.0
+response.setHeader("Expires","0") ;//proxy server  
+ if(session.getAttribute("cuname")==null)
+	{
+	response.sendRedirect("UserLogin.jsp");
+	}
+	%>
+	<a href="UserlogOut">Logout</a>
+	well come ${cuname}
 <jstl:forEach items="${list}" var="list">
 <div class="container">
   

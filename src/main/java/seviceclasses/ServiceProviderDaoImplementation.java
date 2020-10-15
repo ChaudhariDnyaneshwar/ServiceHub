@@ -79,7 +79,7 @@ public class ServiceProviderDaoImplementation implements ServiceProviderDao {
 				sp.setHigh_qualification(request.getString("qualification"));
 				sp.setExperiance(request.getString("experiance"));
 				sp.setDesignation(request.getString("designation"));
-				
+				sp.setUser_name(request.getString("user_name"));
 				return sp;
 			}
 		};

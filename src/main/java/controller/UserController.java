@@ -9,12 +9,17 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import daointerfaceses.DesignationDao;
@@ -28,6 +33,7 @@ import pojoclasses.Validation;
   
   
 @Controller
+
 public class UserController {
 
 	@Autowired
@@ -40,62 +46,61 @@ public class UserController {
 	
 	@Autowired
 	ValidationDao vd;
+	
+	
+	
 	//====================================================================================================
 	
-	@RequestMapping("/userRegistration")
-	  public ModelAndView registerUser(HttpServletRequest request)
-	  {
-		String fname=request.getParameter("firstName");
-		String lname=request.getParameter("lastName");
-		String email=request.getParameter("emailId");
-		String  mobileno=request.getParameter("mobileNo");
-		String gender=request.getParameter("gender");
-		String address=request.getParameter("address");
-		String city=request.getParameter("city");
-		String tahasil=request.getParameter("taluka");
-		String district=request.getParameter("district");
-		String state=request.getParameter("district");
-		String dob=request.getParameter("dob");
-		String username=request.getParameter("username");
-		String password=request.getParameter("password");
-		
-		ModelAndView mv=new ModelAndView();
-		  
-		User user=new User();
-		user.setFname(fname);
-		user.setLname(lname);
-		user.setEmail(email);
-		user.setMobilenumber(mobileno);
-	    user.setGender(gender);
-	    user.setAddress(address);
-	    user.setCity(city);
-	    user.setTahasil(tahasil);
-	    user.setDistrict(district);
-	    user.setState(state);
-	    user.setDateofbirth(dob);
-	    user.setUsername(username);
-	    user.setPassword(password);
-		
-	     int count=ud.save(user);
-	     if( count>0)
-	     {
-	    	 mv.addObject("msg","insertion successfully done...");
-	     }
-	     else
-	     {
-	    	 mv.addObject("msg","insertion is failed...");
-	     }
-	     mv.setViewName("userregistration");
-		  return mv;
-	  }
-//================================================================================================
+
+    @RequestMapping("/userValidation")
+    public ModelAndView doUserLoginValidation(@RequestParam("uname")String uname,@RequestParam("pwd")String password,HttpSession session) throws IOException
+    {
+    	ModelAndView mv=new ModelAndView();
+    	int a=0;
+    	Validation v=new Validation();
+    	v.setUsername(uname);
+    	v.setPassword(password);
+    	a=vd.userValidation(v);
+    
+       if(a>0)
+       {   
+    	   session.setAttribute("cuname",uname);
+    	  // model.put("cuname",uname);
+    	  mv.setViewName("UserHome");
+    	    
+       }
+       else
+       {
+    	mv.addObject("msg","plse enter valid user name and password");
+       	mv.setViewName("UserLogin");   
+    	
+       }
+    	return mv;
+    }
+
+    //==============================================================================
+   
+   @RequestMapping("/UserlogOut")
+    public ModelAndView getuLogout(HttpSession session)
+    {
+    	ModelAndView mv=new ModelAndView();
+    	session.removeAttribute("cuname");
+    	session.invalidate();
+    	mv.setViewName("UserLogin");
+    	return mv;
+    }
+    
+    
+    
+//=============================================================================================	
+	
     @RequestMapping("/getDesignation")
-	public ModelAndView getDesignation()
+	public ModelAndView getDesignation() throws IOException
 	{
-		ModelAndView mv=new ModelAndView();
-		List<Designation> dlist=dd.getDesignation();
-		mv.addObject("list",dlist);
-		mv.setViewName("Uservices");
+    	ModelAndView mv=new ModelAndView();	
+    		List<Designation> dlist=dd.getDesignation();
+    		mv.addObject("list",dlist);
+    		mv.setViewName("Uservices");	
 		return mv;
 	}
 	//============================================================================================
@@ -143,29 +148,66 @@ public class UserController {
 		InputStream inputstream=new ByteArrayInputStream(photo);
 		IOUtils.copy(inputstream, response.getOutputStream());
     }
+
     
-    @RequestMapping("/userValidation")
-    public ModelAndView doUserLoginValidation(@RequestParam("uname")String uname,@RequestParam("pwd")String password)
-    {
-    	ModelAndView mv=new ModelAndView();
-    	int a=0;
-    	Validation v=new Validation();
-    	v.setUsername(uname);
-    	v.setPassword(password);
-    	a=vd.userValidation(v);
+    //=========================================================================
+	@RequestMapping("/userRegistration")
+	  public ModelAndView registerUser(HttpServletRequest request)
+	  {
+		String fname=request.getParameter("firstName");
+		String lname=request.getParameter("lastName");
+		String email=request.getParameter("emailId");
+		String  mobileno=request.getParameter("mobileNo");
+		String gender=request.getParameter("gender");
+		String address=request.getParameter("address");
+		String city=request.getParameter("city");
+		String tahasil=request.getParameter("taluka");
+		String district=request.getParameter("district");
+		String state=request.getParameter("district");
+		String dob=request.getParameter("dob");
+		String username=request.getParameter("username");
+		String password=request.getParameter("password");
+		
+		ModelAndView mv=new ModelAndView();
+		  
+		User user=new User();
+		user.setFname(fname);
+		user.setLname(lname);
+		user.setEmail(email);
+		user.setMobilenumber(mobileno);
+	    user.setGender(gender);
+	    user.setAddress(address);
+	    user.setCity(city);
+	    user.setTahasil(tahasil);
+	    user.setDistrict(district);
+	    user.setState(state);
+	    user.setDateofbirth(dob);
+	    user.setUsername(username);
+	    user.setPassword(password);
+		
+	     int count=ud.save(user);
+	     if( count>0)
+	     {
+	    	 mv.addObject("msg","insertion successfully done...");
+	     }
+	     else
+	     {
+	    	 mv.addObject("msg","insertion is failed...");
+	     }
+	     mv.setViewName("userregistration");
+		  return mv;
+	  }
+//================================================================================================
     
-       if(a>0)
-       {
-    	   mv.setViewName("UserHome");
-       }
-       else
-       {
-    	mv.addObject("msg","plse enter valid user name and password");
-       	mv.setViewName("UserLogin");   
-       }
-    	System.out.println(a);
-    	
-    	return mv;
-    }
-    
+	@RequestMapping("/getAppointment")
+	public ModelAndView  getAppointment(@RequestParam("cuname")String cuname,@RequestParam("spuname")String spuname)
+	{
+		ModelAndView mv=new ModelAndView();
+		System.out.println(cuname);
+		System.out.println(spuname);
+		mv.setViewName("AllSpForUser");
+		return mv;
+	}
+	
+	//===========================================================================================
 }

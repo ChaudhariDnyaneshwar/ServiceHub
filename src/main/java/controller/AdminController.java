@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -270,7 +271,7 @@ public class AdminController {
     
     //========================================================================
      @RequestMapping("/adminLoginValidation")
-     public ModelAndView getAdminValidation(@RequestParam("uname")String uname,@RequestParam("pwd")String password)
+     public ModelAndView getAdminValidation(HttpSession session,@RequestParam("uname")String uname,@RequestParam("pwd")String password)
      {
     	 ModelAndView mv=new ModelAndView();
     	 Validation v=new Validation();
@@ -279,6 +280,7 @@ public class AdminController {
     	 int count=vd.adminValidation(v);
     	 if(count>0)
     	 {
+    		 session.setAttribute("auname",uname);
     		 mv.setViewName("AdminHome");
     	 }
     	 else
