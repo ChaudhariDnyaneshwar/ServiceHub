@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
-    <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,40 +13,19 @@
 </head>
 
 <body>
-<%
 
-response.setHeader("Cache-Control"," no-cache, no-store, must-revalidate");//HTTP 1.0
-response.setHeader("Pragma","no-cache");//HTTP 1.0
-response.setHeader("Expires","0") ;//proxy server
-if(session.getAttribute("cuname")==null)
-	{
-	response.sendRedirect("UserLogin.jsp");
-	}
-	%>
-	<a href="UserlogOut">Logout</a>
-	well come ${cuname}
+<jstl:forEach items="${list}" var="list">
 <div class="container">
- ${msg }
   <div class="panel panel-default">
-  
     <div class="panel-body">
-   <a href="getAllSpForUser" class="btn btn-success">All Service Provider</a>
-    </div>
-  </div>
-</div>
-
-  
-  <jstl:forEach items="${list}" var="li">
-<div class="container">
- 
-  <div class="panel panel-default">
-  
-    <div class="panel-body">
-   
-  <a href="DrelatedSP?des=${li.designation}" class="btn btn-success"><h6>${li.designation}</h6></a>
-    </div>
+   <h2> Name : ${list.fname }   ${list.lname}</h2>
+   <h4>mobile Number: ${list.mobilenumber}</h4>
+   <h4>Email:${list.email }</h4> 
+    
+   </div>
   </div>
 </div>
 </jstl:forEach>
+
 </body>
 </html>

@@ -16,6 +16,7 @@ import pojoclasses.EmailGenerate;
 
 public class EmailGenarateDaoImplementation implements EmailGenarateDao {
 
+	// code for the sending mail ...
 	public void sendEmail(EmailGenerate e) {
         final String userName="workportalteam@gmail.com";
         final String password="Workportal@123";
@@ -38,17 +39,16 @@ public class EmailGenarateDaoImplementation implements EmailGenarateDao {
        	 Message message=new MimeMessage(session);
 			message.setFrom(new InternetAddress(userName));
 			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(e.getReciption()));
-		//	message.setRecipients(Message.RecipientType.TO, arg1);
+		
 			message.setSubject(e.getSubject());
 			message.setText(e.getMessage());
 
 			 Transport.send(message);
-			 System.out.println("it done....");
+			 
 		} catch (AddressException a) {
-			// TODO Auto-generated catch block
+			
 			a.printStackTrace();
 		} catch (MessagingException a) {
-			// TODO Auto-generated catch block
 			a.printStackTrace();
 		}
    }

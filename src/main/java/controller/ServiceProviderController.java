@@ -1,6 +1,9 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.ValidationDao;
 import pojoclasses.ServiceProvider;
+import pojoclasses.User;
 import pojoclasses.Validation;
 
 @Controller
@@ -24,16 +28,19 @@ public class ServiceProviderController {
 	@Autowired
 	ValidationDao vd;
 
+	
+	//====================service provider login validation and maintain session
 	 @RequestMapping("/ServiceProviderLogin")
-	 public ModelAndView validServiceProvider(@RequestParam("uname")String uname,@RequestParam("pwd")String pass)
+	 public ModelAndView validServiceProvider(@RequestParam("uname")String uname,@RequestParam("pwd")String pass,HttpSession session)
 	 {
 		 ModelAndView mv=new ModelAndView();
 		 Validation v=new Validation();
-		 v.setUsername(pass);
-		 v.setPassword(uname);
+		 v.setUsername(uname);
+		 v.setPassword(pass);
 		 int a= vd.serviceProviderValidation(v);
 		 if(a>0)
 		 {
+			 session.setAttribute("sp_uname",uname);
 			 mv.setViewName("ServiceProviderHome");
 		 }
 		 else
@@ -45,7 +52,21 @@ public class ServiceProviderController {
 	 }
 		 
 
-	
+	//============get client appointment list
+	 
+	 @RequestMapping("/getClient")
+	 public ModelAndView getClient(@RequestParam("sp_uname")String uname)
+	 {
+		 ModelAndView mv=new ModelAndView();
+		 System.out.println(uname);
+		   List<User> list=spd.getClient(uname);
+		   System.out.println();
+		   mv.addObject("list",list);
+		 mv.setViewName("ClientForSp");
+		 return mv;
+	 }
+	 
+	 //======send service provider request for registration...
 	
 	
 	@RequestMapping(value = "/ServiceProviderRegistration", method = RequestMethod.POST)
@@ -100,18 +121,13 @@ public class ServiceProviderController {
 		sp.setPssword(password);
 		sp.setDesignation(designation);
 		int a=spd.save(sp);
-		if(a>0)
-		{
-			mv.addObject("msg","successfully insertion");
-		}
-		else
-		{
-			mv.addObject("msg","failed insertion");
-		}
+		
 		mv.setViewName("ServiceProviderRegistration");
 		return mv;
 	}
-    //=========================================================================
+    
+	
+	//=========================================================================
  
 	
 

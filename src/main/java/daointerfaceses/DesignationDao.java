@@ -6,8 +6,10 @@ import pojoclasses.Designation;
 
 public interface DesignationDao {
 
+	//adding designation..
 	public int addDesignation(Designation da);
-    public List<Designation> getDesignation();
+   // get list of designation..
+	public List<Designation> getDesignation();
     
 
 }

@@ -45,7 +45,8 @@ public class AdminController {
 	
 	@Autowired
 	ValidationDao vd;
-	//================================================================
+	
+	//==========get service provider list===============================
 
 	@RequestMapping("/getServiceProvider")
 	public ModelAndView getServiceProvider()
@@ -57,6 +58,8 @@ public class AdminController {
 	     return mv;
 	}
 	
+	//==============get service provider images=====================================
+	
 	@RequestMapping("/getSPimgae")
 	public void getSpImage(@RequestParam("id")int id,HttpServletResponse response ) throws SQLException, IOException
 	{
@@ -67,7 +70,8 @@ public class AdminController {
 		IOUtils.copy(inputstream, response.getOutputStream());
 
 	}
-	//==============================================================================
+	
+	//============get service provider Adhar card image ==================================
 	@RequestMapping("/getSpAdharImage")
 	public void getSpAdharImage(@RequestParam("id")int id,HttpServletResponse response) throws SQLException, IOException
 	{
@@ -77,7 +81,7 @@ public class AdminController {
 		InputStream inputstream=new ByteArrayInputStream(bytes);
 		IOUtils.copy(inputstream, response.getOutputStream());
 	}
-	//==============================================================================
+	//=========get service provider licence image===============================================
 	
 	   @RequestMapping("/getSplicence")
 	   public void getSpLicence(@RequestParam("id")int id,HttpServletResponse response) throws SQLException, IOException
@@ -89,7 +93,7 @@ public class AdminController {
 			IOUtils.copy(inputstream, response.getOutputStream());
 	   }
 	   
-	//=============================================================================
+	//=============get service provider qualification image======================================
 	
 	   @RequestMapping("/getSpQualificationImg")
 	   public void getSpQualificationImag(@RequestParam("id")int id,HttpServletResponse response) throws SQLException, IOException
@@ -101,7 +105,7 @@ public class AdminController {
 				IOUtils.copy(inputstream, response.getOutputStream());
 	   } 
 	   
-	//=============================================================
+	//==========get service provider  list of registration request=================================================
 	
 	@RequestMapping("/spregistration_request")
 	public ModelAndView getSPreqeust() {
@@ -112,7 +116,7 @@ public class AdminController {
 		return mv;
 	}
 
-	//=======================================================================
+	//=======get service provider  image of registration request=============================
 	
 	@RequestMapping("/getSPImage_req")
 	public void getSPimageRequest(@RequestParam("id") int id, HttpServletResponse response)
@@ -130,7 +134,7 @@ public class AdminController {
 	}
 
 
-	//===========================================================================
+	//===============get service provider licence image for registration reqeust
 	@RequestMapping("/getSplicence_req")
 	public void getSpLicenceRequest(@RequestParam("id") int id, HttpServletResponse response)
 			throws SQLException, IOException {
@@ -142,7 +146,7 @@ public class AdminController {
 
 	}
 
-	//===============================================================================
+	//==========get service provider adhar image for registration reqeust========
 	@RequestMapping("/getSpAdharImage_req")
 	public void getSpAdharimageRequest(@RequestParam("id") int id, HttpServletResponse response)
 			throws SQLException, IOException {
@@ -155,7 +159,7 @@ public class AdminController {
 	}
 	
 
-	//==========================================================================================
+	//==========get service provider qualification images of registration request================
 
 	 @RequestMapping("/getSpQualification_req")
 	 public void getSpcQualificationRequest(@RequestParam("id")int id,HttpServletResponse response) throws SQLException, IOException
@@ -168,7 +172,7 @@ public class AdminController {
 		 IOUtils.copy(inputstream, response.getOutputStream());
 	 }
 	 
-	 //==========================================================================================
+	 //========reject service provider registration request====================================
 	 @RequestMapping("/RejectServiceProvider")
 	 public ModelAndView rejectServiceProvider(@RequestParam("id")int id,@RequestParam("mail")String rmail)
 	 {
@@ -187,7 +191,7 @@ public class AdminController {
 		 return mv;
 	 }
 	 
-	 //=============================================================================================
+	 //===========get all user list      =================
 	 @RequestMapping("/getAllusers")
 	  public ModelAndView getAlluser()
 	  {
@@ -200,7 +204,7 @@ public class AdminController {
 		  
 	  }
 	 
-	 //=================================================================================================
+	 //======delete the user ======
 	 @RequestMapping("/deleteUser")
 	 public ModelAndView deleteUser(@RequestParam("id")int id)
 	 {
@@ -210,7 +214,7 @@ public class AdminController {
 		 return mv;
 	 }
 	 
-	 //================================================================================================
+	 //=========Accept service provider registration request====
 
     @RequestMapping("/acceptSpRequesta")
     public ModelAndView acceptSpRequest(@RequestParam("id")int id,@RequestParam("mail")String rmail)
@@ -228,7 +232,7 @@ public class AdminController {
     	mv.setViewName("redirect:/spregistration_request");
     	return mv;
     }
-    //==========================================================================================
+    //==========add designation for the user=====
     @RequestMapping("/addDesignation")
     public ModelAndView addSpDesignation(@RequestParam("designation")String designation)
     {
@@ -248,7 +252,7 @@ public class AdminController {
     	return mv;
     }
     
-    //=======================================================
+    //========after adding designation show the registration page for service provider
     @RequestMapping("/Seviceprovider")
     public ModelAndView getDesignation()
     {
@@ -259,7 +263,7 @@ public class AdminController {
     	return mv;
     }
     
-    //============================================================================
+    //======delete service provider in admin section
     @RequestMapping("/deleteSp")
     public ModelAndView deleteSp(@RequestParam("id")int id)
     {
@@ -269,7 +273,7 @@ public class AdminController {
     	return mv;
     }
     
-    //========================================================================
+    //=======Admin login validation 
      @RequestMapping("/adminLoginValidation")
      public ModelAndView getAdminValidation(HttpSession session,@RequestParam("uname")String uname,@RequestParam("pwd")String password)
      {
@@ -290,6 +294,6 @@ public class AdminController {
     	 }
     	 return mv;		 
      }
-    
+                                     
     
 }

@@ -26,6 +26,7 @@ import daointerfaceses.DesignationDao;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.UserDao;
 import daointerfaceses.ValidationDao;
+import pojoclasses.Appoinment;
 import pojoclasses.Designation;
 import pojoclasses.ServiceProvider;
 import pojoclasses.User;
@@ -49,9 +50,8 @@ public class UserController {
 	
 	
 	
-	//====================================================================================================
+	//==========do user validation and maintain session..
 	
-
     @RequestMapping("/userValidation")
     public ModelAndView doUserLoginValidation(@RequestParam("uname")String uname,@RequestParam("pwd")String password,HttpSession session) throws IOException
     {
@@ -78,7 +78,7 @@ public class UserController {
     	return mv;
     }
 
-    //==============================================================================
+    //======do user logout operation...
    
    @RequestMapping("/UserlogOut")
     public ModelAndView getuLogout(HttpSession session)
@@ -92,7 +92,7 @@ public class UserController {
     
     
     
-//=============================================================================================	
+//=================get list of services available in our web application for user	
 	
     @RequestMapping("/getDesignation")
 	public ModelAndView getDesignation() throws IOException
@@ -103,7 +103,9 @@ public class UserController {
     		mv.setViewName("Uservices");	
 		return mv;
 	}
-	//============================================================================================
+	
+    // get list designation related service provider list ...
+    
     @RequestMapping("/DrelatedSP")
     public ModelAndView getDrelatedSp(@RequestParam("des")String designation)
     {
@@ -114,7 +116,7 @@ public class UserController {
     	return mv;
     	
     }
-    //====================================================================================
+    //=====get list designation related service provider image list..
     
     @RequestMapping("/getDrelatedImg")
     public void getDrelatedImg(@RequestParam("id")int id,HttpServletResponse response) throws SQLException, IOException
@@ -126,7 +128,7 @@ public class UserController {
 		IOUtils.copy(inputstream, response.getOutputStream());
     }
     
-    //==================================================================================
+    //== get all service provider list for the user...
     
     @RequestMapping("/getAllSpForUser")
     public ModelAndView getAllSpForUser()
@@ -138,7 +140,8 @@ public class UserController {
     	return mv;
     }
     
-    //===============================================================================
+    //===== get all service provider images list...
+    
     @RequestMapping("/AllSpForUserImg")
     public void getAllSpImageForUser(@RequestParam("id")int id,HttpServletResponse response) throws SQLException, IOException
     {
@@ -150,7 +153,8 @@ public class UserController {
     }
 
     
-    //=========================================================================
+    //==do user registration operation...
+    
 	@RequestMapping("/userRegistration")
 	  public ModelAndView registerUser(HttpServletRequest request)
 	  {
@@ -186,28 +190,42 @@ public class UserController {
 	    user.setPassword(password);
 		
 	     int count=ud.save(user);
-	     if( count>0)
-	     {
-	    	 mv.addObject("msg","insertion successfully done...");
-	     }
-	     else
-	     {
-	    	 mv.addObject("msg","insertion is failed...");
-	     }
+	
 	     mv.setViewName("userregistration");
 		  return mv;
 	  }
-//================================================================================================
+	
+	
+//===fix appointment to the user....
     
-	@RequestMapping("/getAppointment")
-	public ModelAndView  getAppointment(@RequestParam("cuname")String cuname,@RequestParam("spuname")String spuname)
+	@RequestMapping("/getAppointmentAll")
+	public ModelAndView  getAppointmentAll(@RequestParam("cuname")String cuname,@RequestParam("spuname")String spuname)
 	{
 		ModelAndView mv=new ModelAndView();
-		System.out.println(cuname);
-		System.out.println(spuname);
-		mv.setViewName("AllSpForUser");
+		Appoinment a=new Appoinment();
+		a.setSpuname(spuname);
+		a.setCuname(cuname);
+		int count=ud.addAppoinment(a);
+		
+		mv.setViewName("redirect:/getAllSpForUser");
 		return mv;
 	}
 	
-	//===========================================================================================
+	//==== fix appointment designation related service provider 
+    
+		@RequestMapping("/getAppointmentDrsp")
+		public ModelAndView  getAppointment(@RequestParam("cuname")String cuname,@RequestParam("spuname")String spuname)
+		{
+			ModelAndView mv=new ModelAndView();
+			Appoinment a=new Appoinment();
+			a.setSpuname(spuname);
+			a.setCuname(cuname);
+			int count=ud.addAppoinment(a);
+			
+			mv.setViewName("redirect:/getDesignation");
+			return mv;
+		}
+		
+		//===========================================================================================
+
 }

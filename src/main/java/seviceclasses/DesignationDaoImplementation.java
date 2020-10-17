@@ -14,14 +14,15 @@ import pojoclasses.Designation;
 
 public class DesignationDaoImplementation implements DesignationDao {
 
-	 JdbcTemplate jdbctemplate;
-	 
+	//===user for get datasource connection to the database
 	
+	 JdbcTemplate jdbctemplate;
 	public DesignationDaoImplementation(DataSource ds) {
 		super();
 		this.jdbctemplate =new JdbcTemplate(ds);
 	}
 
+	//==adding designation 
 
 	public int addDesignation(Designation da) {
 		 
@@ -30,7 +31,8 @@ public class DesignationDaoImplementation implements DesignationDao {
 		return jdbctemplate.update(query,null,da.getDesignation());
 	}
 
-
+//get list of designation...
+	
 	public List<Designation> getDesignation() {
 		
 		RowMapper<Designation> rowMapper=new RowMapper<Designation>() {

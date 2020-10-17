@@ -18,7 +18,8 @@
 response.setHeader("Cache-Control"," no-cache,no-store,must-revalidate");//HTTP 1.0
 response.setHeader("Pragma","no-cache");//HTTP 1.0
 response.setHeader("Expires","0") ;//proxy server  
- if(session.getAttribute("cuname")==null)
+
+if(session.getAttribute("cuname")==null)
 	{
 	response.sendRedirect("UserLogin.jsp");
 	}
@@ -46,7 +47,7 @@ response.setHeader("Expires","0") ;//proxy server
     </div>
     <div class="col-lg-6">
      Image:<br><img width="100" height="150"  src='getDrelatedImg?id=${list.sp_id}' class="img-thumbnail" >
-   <br><br><a href="#" class="btn btn-info">communicate</a>
+   <br><br> <a href="getAppointmentDrsp?cuname=${cuname}&spuname=${list.user_name}"  class="btn btn-info">Appointment</a>
     </div>
     
     

@@ -19,7 +19,7 @@
 response.setHeader("Cache-Control"," no-cache,no-store,must-revalidate");//HTTP 1.0
 response.setHeader("Pragma","no-cache");//HTTP 1.0
 response.setHeader("Expires","0") ;//proxy server
-  String cuname=(String)session.getAttribute("cuname");
+  
   if(session.getAttribute("cuname")==null)
 	{
 	response.sendRedirect("UserLogin.jsp");
@@ -27,7 +27,7 @@ response.setHeader("Expires","0") ;//proxy server
 	%>
 	<a href="UserlogOut">Logout</a>
 	well come ${cuname}
-
+${msg}
 
 
 
@@ -52,7 +52,8 @@ response.setHeader("Expires","0") ;//proxy server
     </div>
     <div class="col-lg-6">
      Image:<br><img width="100" height="150"  src='AllSpForUserImg?id=${list.sp_id}' class="img-thumbnail" >
-   <br><br>    <a href="getAppointment?cuname=${cuname}&spuname=${list.user_name}"  class="btn btn-info">Appointment</a>
+   <br><br>    <a href="getAppointmentAll?cuname=${cuname}&spuname=${list.user_name}"  class="btn btn-info">Appointment</a>
+        
     </div>
     
     

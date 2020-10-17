@@ -14,15 +14,16 @@ import pojoclasses.Validation;
 
 public class ValidationDaoImplement  implements ValidationDao{
         
-	   JdbcTemplate jdbctemplate;
-	   
+	// user for get data source for database connection...   
 	
+	JdbcTemplate jdbctemplate;
 	public ValidationDaoImplement(DataSource ds) {
 		super();
 		this.jdbctemplate =new JdbcTemplate(ds);
 	}
 
-
+// use for the done user validation for login ....
+	
 	public int userValidation(Validation v) {
 		int a=0;
 		String query="select * from user_registration where user_name='"+v.getUsername() +"' and password='"+v.getPassword()+"'";
@@ -45,8 +46,8 @@ public class ValidationDaoImplement  implements ValidationDao{
 	}
 
 
+	// user for the get service provider validation for login
 	public int serviceProviderValidation(Validation v) {
-		// TODO Auto-generated method stu
 	  int count=0;
 		String query="select * from sp_final where user_name='"+v.getUsername() +"' and password='"+v.getPassword()+"'";
 		
@@ -65,7 +66,8 @@ public class ValidationDaoImplement  implements ValidationDao{
 		return count;
 	}
 
-
+// user for the admin validation for login...
+	
 	public int adminValidation(Validation v) {
 		int count=0;
 		String query="select * from Admin where username='"+v.getUsername() +"' and password='"+v.getPassword()+"'";

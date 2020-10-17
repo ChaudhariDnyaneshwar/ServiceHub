@@ -32,7 +32,7 @@ import seviceclasses.ValidationDaoImplement;
 public class WebAppConfiguration extends WebMvcConfigurerAdapter
 {
 	
-	//========================================================================================
+	//========= Internal Resource view resolver bean for views===================
 	@Bean
 	public InternalResourceViewResolver getView()
 	{
@@ -42,7 +42,7 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 		return ir;
 	}
 	
-	//==========================================================================================
+	//======= get data souce bean for database connection   ==================
 	
 	@Bean
 	 public DriverManagerDataSource getDataSource()
@@ -56,16 +56,15 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 		 return ds;
 	 }
 	
-//===========================================================================================
+//============Multipart resolver bean for using multipart files or photo==========================
 	
 	@Bean
 	public MultipartResolver multipartResolver() {
-		System.out.println("this is also done");
 		return new CommonsMultipartResolver();
 	
 	}
 
-//=============================================================================================
+//=============get autowired user dao interface=======================
 	
 	@Bean
 	public UserDao getUserDao()
@@ -74,14 +73,14 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 		return ud;
 	}
 	
-//==============================================================================================	
+//=========== get autowired service provider dao=============================	
 	@Bean
 	public ServiceProviderDao getServiceProviderDao()
 	{
 		ServiceProviderDao spd=new ServiceProviderDaoImplementation(getDataSource());
 		return spd;
 	}
-//=================================================================================
+//============get autowired designation dao      =============================
     @Bean
 	public DesignationDao getDesignationdao()
 	{
@@ -89,20 +88,19 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 		return da;
 	}
 	
-	//==========================================================================
-	// adding static resources in project
+	//==========configure this bean for  adding static resoureces in project=============
+	
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		// TODO Auto-generated method stub
 			registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 		super.addResourceHandlers(registry);
 		}
-//===================================================================================
+//==============autowired emailgenaratie dao class for send mail=====================
 	@Bean
 	public EmailGenarateDao sendEmail()
 	{
 	  return new EmailGenarateDaoImplementation();
 	}
-//===================================================================================
+//===========get autowired for all login validations       =====================
 @Bean
  public ValidationDao getVaidation()
  {

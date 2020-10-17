@@ -12,10 +12,12 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
 import daointerfaceses.UserDao;
+import pojoclasses.Appoinment;
 import pojoclasses.User;
 
 public class UserDaoImplementation implements UserDao {
 
+	// get data source for the database connection...
 	JdbcTemplate jdbctemplate;
 
 	public UserDaoImplementation(DataSource datasource) {
@@ -24,7 +26,8 @@ public class UserDaoImplementation implements UserDao {
 	}
 
 	
-	//==============================================================
+	//====insert user data into database for user registration..
+	
 	public int save(User u) {
 
 		String query = "insert into user_registration values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -37,7 +40,8 @@ public class UserDaoImplementation implements UserDao {
 	}
 
 	
-	//=====================================
+	//==get the list of all user for admin
+	
 	public List<User> getUsers() {
 
 		RowMapper<User> rowMapper = new RowMapper<User>() {
@@ -65,10 +69,19 @@ public class UserDaoImplementation implements UserDao {
 		return list;
 	}
 
-	//=================================
+	//=delete the user from database for admin...
+	
 	public int deletUser(int id) {
 		String query="delete from user_registration where userId=?";
 	int count=jdbctemplate.update(query,id);
+		return count;
+	}
+
+//== insert the appoinment ....
+	
+	public int addAppoinment(Appoinment a) {
+		String query="insert into appoinment values(?,?)";
+		int count=jdbctemplate.update(query,a.getSpuname(),a.getCuname());
 		return count;
 	}
 

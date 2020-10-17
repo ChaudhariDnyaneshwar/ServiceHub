@@ -9,7 +9,7 @@
 <body>
 <%
 response.setHeader("Cache-Control"," no-cache,no-store,must-revalidate");//HTTP 1.0
-response.setHeader("Pragma","no-cache");//HTTP 1.0
+response.setHeader("Pragma","no-cache");     //HTTP 1.0
 response.setHeader("Expires","0") ;//proxy server %>
 <a href="UserLogin.jsp">User Login</a>|<br>
 <a href="SeviceProviderLogin.jsp">Service Provider login</a>|<br>
