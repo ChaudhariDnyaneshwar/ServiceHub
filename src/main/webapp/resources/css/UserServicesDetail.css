@@ -1,0 +1,32 @@
+ 
+.body{
+	background-color: #f0e9e6;
+}
+
+.a{
+	color: white;
+}
+ /*setting panel height and width*/
+  .panel{
+    height: 540 px;
+    width: 700px;
+  }
+/*setting panel body background.*/
+  .panel-body
+  {
+  	background-color: #ebe4e9;
+  	height: 30px;
+  }
+.img
+{
+	 margin-top: 50px;
+	  margin-right: 20px;
+	 
+}
+
+
+  .panel-heading{
+  	background-color: grey;
+     color:white;
+     font-size: 30px;
+   }

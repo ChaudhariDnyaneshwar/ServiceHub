@@ -2,21 +2,27 @@ body{
 	margin: 0;
 	padding: 0;
 	text-align: center;
-	font-family:"Montserrat";
+	font-family:"Montserrat-light";
+}
+.nav-icon{
+	color: white;
 }
 .main{
-	width: auto;
+	/*width: auto;*/
 	border:2px solid #fcfc;
-	background-color:#cdd0d4;
+	/*background-color:#e1eaea;*/
 }
 form{
-	padding: 2% 10%;
+	margin:2% 15% 2% 15%;
+	background-color:#ef8172;
+	color: white;
+	padding:5% 5%;
 }
 .heading{
 	font-family:"Montserrat-Black"; 
 	text-decoration: bold;
 	font-weight: 900;
-	font-size:3.5rem;
+	font-size:3rem;
 	line-height: 1.5;
 	text-align: center;
 }
@@ -53,4 +59,10 @@ i{
   color: red;
   visibility: hidden;
 
+}
+.create{
+	color: black;
+	padding:10px;
+	font-size:1.2rem;
+	text-decoration: none;
 }

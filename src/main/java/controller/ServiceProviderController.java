@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import daointerfaceses.EmailGenarateDao;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.ValidationDao;
+import pojoclasses.EmailGenerate;
 import pojoclasses.ServiceProvider;
 import pojoclasses.User;
 import pojoclasses.Validation;
@@ -28,8 +30,10 @@ public class ServiceProviderController {
 	@Autowired
 	ValidationDao vd;
 
-	
+	@Autowired
+	EmailGenarateDao egd;
 	//====================service provider login validation and maintain session
+	
 	 @RequestMapping("/ServiceProviderLogin")
 	 public ModelAndView validServiceProvider(@RequestParam("uname")String uname,@RequestParam("pwd")String pass,HttpSession session)
 	 {
@@ -79,21 +83,21 @@ public class ServiceProviderController {
 		String lname = request.getParameter("lname");
 		String mob_number = request.getParameter("mob");
 		String mail = request.getParameter("email");
-		String adhar_number = request.getParameter("addarn");
+		String adhar_number = request.getParameter("adhar");
 		String designation = request.getParameter("design");
 		String gender = request.getParameter("gender");
 		String date_of_birth = request.getParameter("date");
 		String specialization = request.getParameter("specialization");
-		String address = request.getParameter("adrress");
+		String address = request.getParameter("address");
 		String city = request.getParameter("city");
-		String tahsil = request.getParameter("tahsil");
+		String tahsil = request.getParameter("taluka");
 		String district = request.getParameter("dist");
 		String state = request.getParameter("state");
 		String qualification = request.getParameter("hqualification");
 		String univercity = request.getParameter("univercity");
 		String experiance = request.getParameter("experiance");
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String password = request.getParameter("password1");
 	
 		
 		ServiceProvider sp=new ServiceProvider();
@@ -121,8 +125,18 @@ public class ServiceProviderController {
 		sp.setPssword(password);
 		sp.setDesignation(designation);
 		int a=spd.save(sp);
-		
-		mv.setViewName("ServiceProviderRegistration");
+		if(a>0)
+		{
+			mv.addObject("rmsg","your registration reqeust is sucessfully done..");
+			EmailGenerate eg=new EmailGenerate();
+			eg.setMessage("your registration request process is done. you will get within 2 days response from Service Hub. your user name is : "+username+"  and password is  : "+password);
+			eg.setSubject("Related to service provider registration request..");
+			eg.setReciption(mail);
+			egd.sendEmail(eg);
+			
+		}
+		mv.addObject("rmsg","your reqeust is field..");
+		mv.setViewName("SeviceProviderLogin");
 		return mv;
 	}
     

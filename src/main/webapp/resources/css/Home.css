@@ -1,0 +1,147 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family:Montserrat-Light;
+}
+body{
+	font-family:"Montserrat";
+}
+
+/*h1*/
+.heading1{
+   color: #d13f34;
+	font-size:3rem;
+	font-family:Montserrat-Dark;
+	line-height: 1.2;
+	font-weight: bold;
+ }
+ /*div*/
+ .division{
+	padding:3% 8%;
+}
+/*img*/
+.title-img{
+	width:80%;
+}
+/*logo*/
+.logo{
+	width:100px;
+}
+/*hr*/
+.line{
+	width:150px;
+	border-bottom: dotted 15px #d13f34;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+/*navbar*/
+.nav-icon{
+	color: white;
+}
+.navbar{
+
+	color: white;
+	background-color: #ef8172;
+	padding: 0 0 2.5rem;
+}
+.navbar-brand{
+	font-size: 3.5rem;
+	font-family: "Ubuntu";
+	font-weight: bold;
+	color: white;
+}
+.navbar-nav{
+	margin-left: 50%;
+	text-align:center;
+}
+.nav-item{
+padding: 0 8px;
+}
+.nav-link{
+	color: white;
+	font-size: 1.3rem;
+	font-family:Montserrat-Light;
+}
+
+/*carsoule*/
+.text-animate{
+	text-align: justify;
+	font-size:10vw;
+	color: #ef8172;
+  white-space:nowrap;
+  overflow:hidden;
+  animation:typing 5s steps(10);
+}
+@keyframes typing {
+  0% { width:0ch }
+  20%{width:2ch}
+  40%{width:4ch}
+  80%{width:8ch}
+  100% { width:10ch }
+}
+
+/*what we do(wwd)*/
+.wwd-heading{
+   color: #d13f34;
+}
+.wwd-info{
+	font-family:Montserrat-Light;
+	font-size:1.5rem;
+}
+/*---------------------about------------------------------*/
+.about{
+	margin: 0;
+}
+.about-info{
+	font-size: 2rem;
+	text-align: justify-all;
+}
+.team-member {
+	background-color:#ef8172;
+	color: white;
+}
+.team-member i{
+	color: white;
+} 
+ /*--------------------------contact-----------------------*/
+.contact .heading1{
+font-size: 2rem;
+}
+.contact i{
+	margin-top:10px;
+	color: #f0653e;
+	font-size:2rem;
+}
+.contact p{
+	color: black;
+	font-size: 1.3rem;
+}
+.contact a{
+	color: black;
+}
+ 
+.map-responsive{
+    overflow:hidden;
+    margin:10px;
+    padding-top:56.25%;
+    padding-bottom:40%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:460px;
+    width:100%;
+    position:absolute;
+}
+ 
+ /*footer*/
+ .footer{
+ 	padding: 2% 5%;
+ }
+ .footer i{
+ 	color: white;
+ }

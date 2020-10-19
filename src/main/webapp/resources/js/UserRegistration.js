@@ -3,7 +3,7 @@ function validate()
 			// Mobile No validation
 			var mno =document.getElementById('mobileNo');
 			var regx=/^[7-9]\d{9}$/;
-			if(regx.test(mno.value) && mno.value.trim()=="") {
+			if(regx.test(mno.value) && mno.value.trim()!="") {
 				document.getElementById('noError').style.visibility="hidden";
 				document.getElementById('noSuccess').style.visibility="visible";
 				document.getElementById('mmsg').style.visibility="hidden";
@@ -13,6 +13,7 @@ function validate()
 				document.getElementById('noError').style.visibility="visible";
 				document.getElementById('mmsg').style.visibility="visible";
 			}
+
 			
 
 
@@ -100,8 +101,8 @@ function validate()
 				document.getElementById('dmsg').style.visibility="hidden";
 			}
 			//state
-			var state=document.getElementById('state');
-			if (state.value.trim()=="") {
+			var state=document.getElementsByTagName('option');
+			if (state.value=="selectState") {
 				document.getElementById('stateError').style.visibility="visible";
 				document.getElementById('stateSuccess').style.visibility="hidden";
 				document.getElementById('smsg').style.visibility="visible";
@@ -147,23 +148,75 @@ function validate()
 				document.getElementById('passSuccess').style.visibility="visible";
 				document.getElementById('pmsg').style.visibility="hidden";
 			}
+			//confirm password
+			var confirm1=document.getElementById('confirm');
+			if (confirm1.value!=pass.value || confirm.value.trim()=="") {
+				document.getElementById('conError').style.visibility="visible";
+				document.getElementById('conSuccess').style.visibility="hidden";
+				document.getElementById('conmsg').style.visibility="visible";
+			}
+			else{
+				document.getElementById('conError').style.visibility="hidden";
+				document.getElementById('conSuccess').style.visibility="visible";
+				document.getElementById('conmsg').style.visibility="hidden";
+			}
+
+			
 
 			
 
 }
 
-			
-			
-		
+function loginValidation() {
+	var user=document.getElementById('username');
+	var pass=document.getElementById('password');
 
-//show password
-function showPassword(){
-	var password = document.getElementById("password");
-  			if (password.type === "psw") {
-    			password.type = "text";
-  			} else {
-   			 password.type = "psw";
-  			}
+	var user1=document.getElementById('username1');
+			//if (user1.value.trim()=="" || user1.value!=user.value) {
+				if (user1.value.trim()=="" ){
+				document.getElementById('userError1').style.visibility="visible";
+				document.getElementById('userSuccess1').style.visibility="hidden";
+				document.getElementById('u1msg').style.visibility="visible";
+			}
+			else{
+				document.getElementById('userError1').style.visibility="hidden";
+				document.getElementById('userSuccess1').style.visibility="visible";
+				document.getElementById('u1msg').style.visibility="hidden";
+			}
+	// password
+			var pass1=document.getElementById('password1');
+			//if (pass1.value.trim()=="" || pass1.value!=pass.value) {
+				 if(pass1.value.trim()=="" ){
+				document.getElementById('passError1').style.visibility="visible";
+				document.getElementById('passSuccess1').style.visibility="hidden";
+				document.getElementById('p1msg').style.visibility="visible";
+			}
+			else{
+				document.getElementById('passError1').style.visibility="hidden";
+				document.getElementById('passSuccess1').style.visibility="visible";
+				document.getElementById('p1msg').style.visibility="hidden";
+			}
+			//confirm password
+			var confirm1=document.getElementById('confirm1');
+			if (confirm1.value!=pass1.value || confirm1.value.trim()=="") {
+				document.getElementById('conError1').style.visibility="visible";
+				document.getElementById('conSuccess1').style.visibility="hidden";
+				document.getElementById('con1msg').style.visibility="visible";
+			}
+			else{
+				document.getElementById('conError1').style.visibility="hidden";
+				document.getElementById('conSuccess1').style.visibility="visible";
+				document.getElementById('con1msg').style.visibility="hidden";
+			}
 }
 
+	
+// var job=["web designer","web developer","accountant","teacher","designer"];
+// $("#search").autocomplete({
+//   source:job
+// },{
+// 	autoFocus:true,
+// 	delay:300,
+// 	minLength:1
+// });
 

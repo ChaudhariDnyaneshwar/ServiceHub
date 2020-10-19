@@ -23,11 +23,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import daointerfaceses.DesignationDao;
+import daointerfaceses.EmailGenarateDao;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.UserDao;
 import daointerfaceses.ValidationDao;
 import pojoclasses.Appoinment;
 import pojoclasses.Designation;
+import pojoclasses.EmailGenerate;
 import pojoclasses.ServiceProvider;
 import pojoclasses.User;
 import pojoclasses.Validation;
@@ -48,7 +50,8 @@ public class UserController {
 	@Autowired
 	ValidationDao vd;
 	
-	
+	@Autowired
+	EmailGenarateDao egd;
 	
 	//==========do user validation and maintain session..
 	
@@ -65,7 +68,6 @@ public class UserController {
        if(a>0)
        {   
     	   session.setAttribute("cuname",uname);
-    	  // model.put("cuname",uname);
     	  mv.setViewName("UserHome");
     	    
        }
@@ -167,7 +169,7 @@ public class UserController {
 		String city=request.getParameter("city");
 		String tahasil=request.getParameter("taluka");
 		String district=request.getParameter("district");
-		String state=request.getParameter("district");
+		String state=request.getParameter("state");
 		String dob=request.getParameter("dob");
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
@@ -190,8 +192,18 @@ public class UserController {
 	    user.setPassword(password);
 		
 	     int count=ud.save(user);
+	     if(count>0)
+	     {
+	    	 EmailGenerate eg=new EmailGenerate();
+	    	 eg.setMessage("your registration in service hub is successfully done.Well come to the service hub family .your user name is: "+username+" your password is  :"+password);
+	    	 eg.setSubject("Regarding Service hub registration");
+	    	 eg.setReciption(email);
+	    	 egd.sendEmail(eg);
+	    	 mv.addObject("rmsg","your registration is successfully done. now you can login");
+	     }
 	
-	     mv.setViewName("userregistration");
+	     mv.addObject("rmsg","sorry your registration is failed..");
+	     mv.setViewName("UserLogin");
 		  return mv;
 	  }
 	

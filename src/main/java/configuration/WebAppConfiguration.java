@@ -49,10 +49,10 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 	 {
 		 DriverManagerDataSource ds=new DriverManagerDataSource();
 		 ds.setDriverClassName("com.mysql.jdbc.Driver");
-		 ds.setUrl("jdbc:mysql://localhost:3306/workportal");
+		 ds.setUrl("jdbc:mysql://localhost:3306/service_hub");
 		 ds.setUsername("root");
 		 ds.setPassword("Mauli@1997");
-		 System.out.println("databse done..");
+		 
 		 return ds;
 	 }
 	

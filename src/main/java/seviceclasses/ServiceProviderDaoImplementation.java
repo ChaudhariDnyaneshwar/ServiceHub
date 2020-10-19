@@ -39,11 +39,10 @@ public class ServiceProviderDaoImplementation implements ServiceProviderDao {
 	        byte[] photo=p.getPhoto().getBytes();
 	        byte[] adhar_image=p.getAddar_image().getBytes();
 	
-			String query="insert into service_provider values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String query="insert into sp_request values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			  
-			a=jdbctemp.update(query,new Object[]{null,p.getFname(),p.getLname(),p.getMob_number(),p.getEmail(),p.getAddar_number(),p.getGender(),p.getDateofbirth(),
-				p.getSpecialization(),p.getOffice_address(),p.getCity(),p.getTahsil(),p.getDistrict(),p.getState(),p.getHigh_qualification(),p.getUniversity_name(),
-				 p.getExperiance(),licence,photo,adhar_image,p.getUser_name(),p.getPssword(),qualification_certificate,p.getDesignation()});
+			   
+			a=jdbctemp.update(query,new Object[]{null,p.getUser_name(),p.getPssword(),p.getFname(),p.getLname(),p.getMob_number(),p.getEmail(),p.getAddar_number(),p.getGender(),p.getDateofbirth(),p.getSpecialization(),p.getOffice_address(),p.getCity(),p.getTahsil(),p.getDistrict(),p.getState(),p.getHigh_qualification(),p.getUniversity_name(),p.getExperiance(),p.getDesignation(),photo,adhar_image,licence,qualification_certificate});
 			
 		
 		} catch (IOException e) {
@@ -66,15 +65,15 @@ public class ServiceProviderDaoImplementation implements ServiceProviderDao {
 				sp.setFname(request.getString("fname"));
 				sp.setLname(request.getString("lname"));
 				sp.setMob_number(request.getString("mob_number"));
-				sp.setEmail(request.getString("emai"));
-				sp.setAddar_number(request.getString("addr_number"));
+				sp.setEmail(request.getString("email"));
+				sp.setAddar_number(request.getString("adhar_number"));
 				sp.setGender(request.getString("gender"));
 				sp.setDateofbirth(request.getString("date_of_birth"));
 				sp.setSpecialization(request.getString("specialization"));
 				sp.setOffice_address(request.getString("address"));
 				sp.setCity(request.getString("city"));
 				sp.setTahsil(request.getString("tahsil"));
-				sp.setDistrict(request.getString("tahsil"));
+				sp.setDistrict(request.getString("district"));
 				sp.setState(request.getString("state"));
 				sp.setHigh_qualification(request.getString("qualification"));
 				sp.setExperiance(request.getString("experiance"));
@@ -102,7 +101,7 @@ String query="select photo from sp_final where spId=?";
 	
 	public Blob getSpAdharImage(int id) {
 		
-		 String query="select addar_imgae from sp_final where spId=?";
+		 String query="select adhar_img from sp_final where spId=?";
 			
 			Blob adhar=jdbctemp.queryForObject(query, new Object[]{id}, Blob.class);
 
@@ -120,7 +119,7 @@ String query="select photo from sp_final where spId=?";
 	}
 //=====get service provider qualification images from database....
 	public Blob getSpQualificationImg(int id) {
-		String query="select qualifica_certificates from sp_final where spId=?";
+		String query="select qualification_img from sp_final where spId=?";
 		Blob qualification=jdbctemp.queryForObject(query, new Object[]{id},Blob.class);
 		return qualification;
 	}
@@ -140,7 +139,7 @@ String query="select photo from sp_final where spId=?";
 				sp.setLname(request.getString("lname"));
 				sp.setMob_number(request.getString("mob_number"));
 				sp.setEmail(request.getString("email"));
-				sp.setAddar_number(request.getString("addr_number"));
+				sp.setAddar_number(request.getString("adhar_number"));
 				sp.setGender(request.getString("gender"));
 				sp.setDateofbirth(request.getString("date_of_birth"));
 				sp.setSpecialization(request.getString("specialization"));
@@ -156,14 +155,14 @@ String query="select photo from sp_final where spId=?";
 				return sp;
 			}
 		};
-List<ServiceProvider>	list=	jdbctemp.query("select * from service_provider",rowMapper);  
+List<ServiceProvider>	list=	jdbctemp.query("select * from sp_request",rowMapper);  
 		return list;
 	}
 
 
 	//==get service provider registration request image from database..
 	public Blob getspRequestImage(int id) {
-		String query="select photo from service_provider where spId=?";
+		String query="select photo from sp_request where spId=?";
 		
 		Blob photo=jdbctemp.queryForObject(query, new Object[]{id}, Blob.class);
 		return photo;
@@ -173,7 +172,7 @@ List<ServiceProvider>	list=	jdbctemp.query("select * from service_provider",rowM
 
 	public Blob getspReqeustlicence(int id) {
 		// TODO Auto-generated method stub
-         String query="select licence from service_provider where spId=?";
+         String query="select licence from sp_request where spId=?";
 		
 		Blob licence=jdbctemp.queryForObject(query, new Object[]{id}, Blob.class);
 
@@ -184,7 +183,7 @@ List<ServiceProvider>	list=	jdbctemp.query("select * from service_provider",rowM
 
 	public Blob getspRequestAddarImage(int id) {
 		// TODO Auto-generated method stub
- String query="select addar_imgae from service_provider where spId=?";
+ String query="select adhar_img from sp_request where spId=?";
 		
 		Blob adhar=jdbctemp.queryForObject(query, new Object[]{id}, Blob.class);
 
@@ -194,7 +193,7 @@ List<ServiceProvider>	list=	jdbctemp.query("select * from service_provider",rowM
  //======get service provider registration request qualification certificate.....
 	
 	public Blob getspRequestQcertificate(int id) {
-		String query="select qualifica_certificates from service_provider where spId=?";
+		String query="select qualification_img from sp_request where spId=?";
 		Blob qualification=jdbctemp.queryForObject(query, new Object[]{id},Blob.class);
 		return qualification;
 	}
@@ -203,16 +202,16 @@ List<ServiceProvider>	list=	jdbctemp.query("select * from service_provider",rowM
 	
 	public int rejectServiceProvider(int id) {
 		// TODO Auto-generated method stub
-		String query="delete from service_provider where spId=?";
+		String query="delete from sp_request where spId=?";
 		return jdbctemp.update(query,id);
 	}
 
 	//===Accept Service provider registration request  from admin... 
 	public int acceptSpRequest(int id) {
 
-		String query="insert sp_final select * from service_provider where spId=?";
+		String query="insert sp_final select * from sp_request where spId=?";
 		int count=jdbctemp.update(query,id);
-		String dquery="delete from service_provider where spId=?";
+		String dquery="delete from sp_request where spId=?";
 		jdbctemp.update(dquery,id);
 		return count;
 	}
@@ -238,7 +237,7 @@ List<ServiceProvider>	list=	jdbctemp.query("select * from service_provider",rowM
 						sp.setFname(request.getString("fname"));
 						sp.setLname(request.getString("lname"));
 						sp.setMob_number(request.getString("mob_number"));
-						sp.setEmail(request.getString("emai"));
+						sp.setEmail(request.getString("email"));
 						sp.setSpecialization(request.getString("specialization"));
 						sp.setOffice_address(request.getString("address"));
 						sp.setDistrict(request.getString("district"));
@@ -270,6 +269,7 @@ List<ServiceProvider>	list=	jdbctemp.query("select * from service_provider",rowM
 				 u.setLname(request.getString("lname"));
 				 u.setMobilenumber(request.getString("mobile_no"));
 				 u.setEmail(request.getString("email"));
+				 u.setAddress(request.getString("address"));
 				return u;
 			}
 		};	

@@ -7,19 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
+ <%
 
 response.setHeader("Cache-Control"," no-cache, no-store, must-revalidate");//HTTP 1.0
 response.setHeader("Pragma","no-cache");//HTTP 1.0
 response.setHeader("Expires","0") ;//proxy server
 if(session.getAttribute("sp_uname")==null)
 	{
-	response.sendRedirect("ServiceProviderLogin.jsp");
+	response.sendRedirect("SeviceProviderLogin.jsp");
 	}
 	%>
 
-Well come to service provider   :${sp_uname}<br><br>
-<a href="getClient?sp_uname=${sp_uname}"  class="btn btn-info">Clients</a>
-
+ <!-- nav bar -->
+ <%@include file="ServiceProviderNav.jsp" %>
+<h4> Well come ${sp_uname}</h4> 
+ <!-- body code -->
+ <%@ include file="SharHome.jsp" %>
 </body>
 </html>

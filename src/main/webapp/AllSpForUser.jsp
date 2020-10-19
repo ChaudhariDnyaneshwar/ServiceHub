@@ -1,20 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+    
+     <!-- decalaring spring valriable for static resources -->
+   <spring:url var="css" value="/resources/css" ></spring:url>
+   <spring:url var="image" value="/resources/image"></spring:url>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
+  <title>User Services</title>
 
-<body>
+	<!-- CSS only -->
+	<link rel="stylesheet" type="text/css" href="${css}/UserServicesDetail.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<%
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<!-- meta tag -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  </head>
+
+<body class="body">
+
+
+< <%
 
 response.setHeader("Cache-Control"," no-cache,no-store,must-revalidate");//HTTP 1.0
 response.setHeader("Pragma","no-cache");//HTTP 1.0
@@ -25,43 +42,35 @@ response.setHeader("Expires","0") ;//proxy server
 	response.sendRedirect("UserLogin.jsp");
 	}
 	%>
-	<a href="UserlogOut">Logout</a>
-	well come ${cuname}
-${msg}
+ 
+<%@include file="UserNav.jsp" %>
 
-
-
-<jstl:forEach items="${list}" var="list">
-<div class="container">
+ <jstl:forEach items="${list}" var="list">
+ <div class="fixed" >
   
-  <div class="panel panel-default">
-    <div class="panel-heading">  
-        <h3>Name :  ${list.fname}   ${list.lname}</h3>
-       
-     </div>
-          <div class="row">
-    <div class="panel-body">
-           <div class="col-lg-6">
-       <h4><b>mobile number is :</b>  ${list.mob_number }</h4>
-     <h4><b>Email id is:</b>  ${list.email }</h4>
-     <h4><b>Designation Is :</b>  ${list.designation}</h4>
-     <h4><b>specialization is:</b>  ${list.specialization }</h4>
-     <h4><b>office address is :</b>  ${list.office_address }</h4>
-     <h4><b>qualification is :</b>  ${list.high_qualification}</h4>
-     <h4><b>experiance is :</b>  ${list.experiance}</h4>   
-    </div>
-    <div class="col-lg-6">
-     Image:<br><img width="100" height="150"  src='AllSpForUserImg?id=${list.sp_id}' class="img-thumbnail" >
-   <br><br>    <a href="getAppointmentAll?cuname=${cuname}&spuname=${list.user_name}"  class="btn btn-info">Appointment</a>
-        
-    </div>
-    
-    
-    </div>
-    </div>
-  </div><br><br>
-</div>
+		<div class="panel panel-info " style="margin-left: 350px;margin-right: 350px;margin-top:50px ;border-width: 5px;">
+			<div class="panel-heading">
+			
+				<div id="text" style="display: left;"><b>Name :</b>  ${list.fname}   ${list.lname}
+				
+					<img class="img img-thumbnail" src='AllSpForUserImg?id=${list.sp_id}' width="100px" height="150px" align="right" >
+		          
+				</div>
+			
+		</div>
+			<div class="panel-body">
+			<b>Designation :</b> ${list.designation}</div>
+			<div class="panel-body"><b>Experience :</b>${list.experiance}</div>
+			<div class="panel-body "><b>Specialization :</b> ${list.specialization }</div>
+			<div class="panel-body"><b>Mobile No :</b>${list.mob_number }</div>
+			<div class="panel-body"><b>Email :</b> ${list.email }</div>
+			<div class="panel-body ">
+			<b>Office Address :</b> ${list.office_address }</div>
+		<br><br>    <a href="getAppointmentAll?cuname=${cuname}&spuname=${list.user_name}"  class="btn btn-info">Appointment</a>
+		</div>
 
-</jstl:forEach>
-</body>
+	</div>
+</jstl:forEach>  
+ 
+ </body>
 </html>

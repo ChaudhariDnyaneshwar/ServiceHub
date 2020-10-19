@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%> 
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<head>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+ <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %> 
  
-       <!-- decalaring spring valriable for static resources -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+ <!-- decalaring spring valriable for static resources -->
    <spring:url var="css" value="/resources/css" ></spring:url>
    <spring:url var="image" value="/resources/image"></spring:url>
    
+
+<html>
+<head>
 	<link rel="stylesheet" type="text/css" href="${css}/Home.css">
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
@@ -19,23 +22,17 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">
 	</script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-
-
 	<!-- meta tag -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Home</title>
-	
+	<title>Contact</title>
 </head>
 
 
 <body>
- 
- <div>
- 	<!-- navbar -->
- <nav class="navbar navbar-expand-lg sticky-top">
+	<!---------------------------------------------------------------------navbar----------------------------------------->
+ <!-- nav-bar -->
+	<nav class="navbar navbar-expand-lg sticky-top">
   <a class="navbar-brand" href="#">
     <img src="${image}/logo.png" class="logo">
   </a>
@@ -67,46 +64,54 @@
       
     </ul>
   </div>
-  </nav>
+  </nav> 
+  
+<div class="division contact" id="contact">
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="map-responsive">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15132.295426137158!2d73.8464113!3d18.5255643!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3f92335c2e5c8400!2sP.E.S.%20Modern%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1602144155328!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>">
+				
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<form class="text-center">
+				<h1 class="heading1"><u>Get In Touch</u></h1>
+				<input type="text" name="name" class="form-control mb-3" placeholder="user name/Company name">
+				<select class="form-control mb-3">
+					<option>User</option>
+					<option>Service Provider</option>
+				</select>
+				<textarea class="form-control mb-3" placeholder="Enter Your Message" cols="10" rows="10"></textarea>
+				<button class="btn btn-success btn-lg btn-floating btn-block">Submit</button>
+			</form>
 
-  <!---title-->
-  <!-- carousel -->
-  <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-ride="carousel">
-  <div class="carousel-inner division">
-    <div class="carousel-item active" data-interval="10000">
-      <img src="image/carsoule0.jfif" class="d-block w-100" alt="..." height="400px">
-      <div class="carousel-caption mx-auto text-center">
-        <h5 class="text-animate mb-3">Service Hub</h5>
-      </div>
-    </div>
-    <div class="carousel-item" data-interval="2000">
-      <img src="${image}/carsoule1.jpg" class="d-block w-100" alt="..." height="400px">
-    </div>
-    <div class="carousel-item">
-      <img src="${image}/carsoule2.jpg" class="d-block w-100" alt="..." height="400px">
-    </div>
-    <div class="carousel-item">
-      <img src="${image}/carsoule3.jpg" class="d-block w-100" alt="..." height="400px">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-    <span class="fa fa-chevron-left fa-lg" style="color:red;" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-    <span class="fa fa-chevron-right fa-lg"  style="color:red;"aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+		</div>
+	
+	</div>
+	<div class="row text-center">
+		<div class="col-md-4 mb-5">
+			<i class="fa fa-home"></i>
+			<h1 class="heading1">Address</h1>
+			<p> 1186/A, Off J.M. Road, Shivajinagar,<br> Pune, Maharashtra 411005</p>
+		</div>
+		<div class="col-md-4 mb-5">
+			<i class="fa fa-envelope"></i>
+			<h1 class="heading1">Email Id</h1>
+			<p><a href="mailto:servicehub@gmail.com">servicehubs@gmail.com</a></p>
+		</div>
+		<div class="col-md-4 mb-5">
+			<i class="fa fa-phone"></i>
+			<h1 class="heading1">Phone No</h1>
+			<p>020 25533638</p>
+		</div>
+		
+	</div>
+	
 </div>
-<!-- <hr class="line mx-auto"> -->
-  <!-- what we do -->
-  <div class="division wwd mb-3">
-    <h1 class="mx-auto text-center mb-3 wwd-heading"><u>What We Do</u></h1>
-    <p class="text-justify wwd-info">We work for establishment of communication between different service provider and user/ client.We bring multiple service provider at one place for user convinience.Find Thousand Services If You are Ready To Get.We have 280,000+ live clients adverts on our site, helping you to find any type of services</p>
-  </div>
 <!-- footer -->
 <div class="footer bg-dark text-light">
-  <!-- Footer -->
+	<!-- Footer -->
 <footer class="page-footer">
 
   <!-- Footer Elements -->
@@ -146,18 +151,11 @@
   <!-- Footer Elements -->
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">Â© 2020 Copyright :Service Hub
+  <div class="footer-copyright text-center py-3">© 2020 Copyright :Service Hub
   </div>
   <!-- Copyright -->
 
 </footer>
 <!-- Footer -->
-
-
 </body>
-
-<script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/register.js"></script>
-
 </html>

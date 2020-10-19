@@ -1,46 +1,74 @@
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
- <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
- 
- 
- <!-- decalaring spring variable for static resources -->
- 
- <spring:url var="css" value="/resources/css"></spring:url>
- <spring:url var="image" value="/resources/image"></spring:url>
- <spring:url var="js" value="/resources/js"></spring:url>
+ <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- decalaring spring valriable for static resources -->
+   <spring:url var="css" value="/resources/css" ></spring:url>
+   <spring:url var="image" value="/resources/image"></spring:url>
+    <spring:url var="js" value="/resources/js"></spring:url>
+
 <html>
 <head>
-
 	<link rel="stylesheet" type="text/css" href="${css}/UserRegistration.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="${css}/Home.css">
+	<!-- CSS only -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
+
 	<!-- JS, Popper.js, and jQuery -->
-	
-	<script type="text/javascript" src="${js}/UserRegistration.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
-	
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<!-- meta tag -->
-	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>user login</title>
+	<title>create account</title>
 </head>
 <body>
-
-<div class="row">
+	<!-- navbar -->
+	
+ 	<nav class="navbar navbar-expand-lg sticky-top">
+  <a class="navbar-brand" href="#">
+    <img src="${image}/logo.png" class="logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa fa-bars nav-icon" aria-hidden="true"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="Home.jsp">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="About.jsp">About Us</a>
+      </li>
+     
+      <li class="nav-item">
+        <a class="nav-link" href="Contact.jsp">contact</a>
+      </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">login/Register
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="AdminLogin.jsp">Admin</a>
+          <a class="dropdown-item" href="UserLogin.jsp">User</a>
+          <a class="dropdown-item" href="SeviceProviderLogin.jsp">Service Provider</a>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
+  </nav> 
   
-  <div class="col-lg-3"></div>
-   <div class="col-lg-6">
-   
-
 	<div class="main container-fluid" id="main">
 		<form class="form-group" action="userRegistration">
 		<!-- heading -->
-		<h1 class="heading">Create Account</h1>
+		<h1 class="heading">Create Acoount</h1>
 		<!-- close button -->
 		<div class="close"> 
      		 <span onclick="document.getElementById('main').style.display='none'"
@@ -95,11 +123,11 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<label for="gender">Gender:</label>
-        				<input type="radio" id="gender" name="gender" value="Male" >
+        				<input type="radio" id="gender" name="gender" value="Male" required="">
        					 <label for="male">Male</label>
-       					 <input type="radio" id="gender" name="gender" value="Female" >
+       					 <input type="radio" id="gender" name="gender" value="Female" required="">
         				<label for="female">Female</label>
-        				<input type="radio" id="gender" name="gender" value="Other" >
+        				<input type="radio" id="gender" name="gender" value="Other" required="">
         				<label for="other">Other</label>
 					</div>
 					
@@ -110,7 +138,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<label for="adrress">Address:</label>
-						<textarea cols="80" rows="5" id="adrress" name="address" placeholder="enter your adrress" class="form-control" required=""></textarea>
+						<textarea cols="80" rows="4" id="adrress" name="adrress" placeholder="enter your adrress" class="form-control" required=""></textarea>
 					</div>
 					
 				</div>
@@ -124,15 +152,15 @@
 						<input type="text" name="city" id="city" placeholder="enter your city" class="form-control" required="">
 						<i class="fa fa-check-circle" id="citySuccess"></i>
 						<i class="fa fa-exclamation-circle" id="cityError"></i>
-						<span id="cmsg" class="errormsg">**Enter city name**</span>
+						<span id="cmsg" class="errormsg">**invalid city name**</span>
 					</div>
 					<div class="col-lg-6">
 						<!-- taluka -->
-						<label for="taluka">Tahsil</label>
+						<label for="taluka">Tahshil</label>
 						<input type="text" name="taluka" id="taluka" placeholder="enter your taluka" class="form-control" required="">
 						<i class="fa fa-check-circle" id="talukaSuccess"></i>
 						<i class="fa fa-exclamation-circle"  id="talukaError"></i>
-						<span id="tmsg" class="errormsg">**Enter tahasil  name**</span>
+						<span id="tmsg" class="errormsg">**invalid Tahshil name**</span>
 					</div>
 				</div>
 			</div>
@@ -145,17 +173,18 @@
 						<input type="text" name="district" id="district" placeholder="enter your district" class="form-control" required="">
 						<i class="fa fa-check-circle" id="distSuccess"></i>
 						<i class="fa fa-exclamation-circle" id="distError"></i>
-						<span id="dmsg" class="errormsg">**Envalid district name**</span>
+						<span id="dmsg" class="errormsg">**invalid district name**</span>
 						
 					</div>
 					<div class="col-lg-6">
 						<!-- state -->
 						<label for="state">State</label>
 						<select id="state" name="state" required="" class="form-control">
-  							<option value="mah">Maharashtrah</option>
-  							<option value="har">Haryana</option>
-  							<option value="utt">Utterpardesh</option>
-  							<option value="pun">Punjab </option>
+							<option value="selectState" >Select state</option>
+  							<option value="Maharashtra">Maharashtrah</option>
+  							<option value="Haryana">Haryana</option>
+  							<option value="Utterpardesh">Utterpardesh</option>
+  							<option value="Punjab">Punjab </option>
 						</select>
 						<i class="fa fa-check-circle" id="stateSuccess"></i>
 						<i class="fa fa-exclamation-circle" id="stateError"></i>
@@ -173,12 +202,6 @@
 						<i class="fa fa-exclamation-circle" id="dobError"></i>
 						<span id="dobmsg" class="errormsg">**select your date-of-birth**</span>
 					</div>
-					
-				</div>
-			</div>
-
-			<div class="control">
-				<div class="row">
 					<div class="col-lg-6">
 						<!-- username-->
 						<label for="username">User Name:</label>
@@ -187,6 +210,13 @@
 						<i class="fa fa-exclamation-circle" id="userError"></i>
 						<span id="umsg" class="errormsg">**invalid user name**</span>
 					</div>
+					
+				</div>
+			</div>
+
+			<div class="control">
+				<div class="row">
+					
 					<div class="col-lg-6">
 						<!-- pass-->
 						<label for="password">Password:</label>
@@ -196,9 +226,17 @@
 						<span id="pmsg" class="errormsg">**invalid password**</span>
 						
 					</div>
+					<div class="col-lg-6">
+						<!-- pass-->
+						<label for="conpassword">confirm Password:</label>
+						<input type="password" name="password" id="confirm" placeholder="confirm password" class="form-control" required="">
+						<i class="fa fa-check-circle" id="conSuccess"></i>
+						<i class="fa fa-exclamation-circle" id="conError"></i>
+						<span id="conmsg" class="errormsg">**invalid password**</span>
+						
+					</div>
 				</div>
 			</div>
-			<input type="checkbox" name="showpass" onclick="showPassword()"><label>show Password</label>
 
 			<br>
 			<button class="btn btn-success" type="submit" onclick="validate();">submit
@@ -206,11 +244,6 @@
 
 		</form>
 	</div>
-	${msg}
-   </div>
-<div class="col-lg-3"></div>
-</div>
-
 
 </body>
 </html>

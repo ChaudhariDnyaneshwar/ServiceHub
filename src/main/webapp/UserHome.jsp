@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
- 
-<% 
+<!-- nav barr -->
+ <%@include file="UserNav.jsp" %>
+<!--  --> 
+<%-- <% 
 response.setHeader("Cache-Control"," no-cache, no-store, must-revalidate");//HTTP 1.0
 response.setHeader("Pragma","no-cache");//HTTP 1.0
 response.setHeader("Expires","0") ;//proxy server
@@ -16,10 +18,9 @@ response.setHeader("Expires","0") ;//proxy server
  if(session.getAttribute("cuname")==null)
 {
 	response.sendRedirect("UserLogin.jsp");
-}
+} --%>
  %>     
     wellcome  ${cuname}
-<a href="getDesignation">Services for user</a><br>
-<a href="UserlogOut">Logout</a>
+  <%@include file="SharHome.jsp" %>  
 </body>
 </html>
