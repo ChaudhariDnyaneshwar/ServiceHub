@@ -11,20 +11,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="${css}/Home.css">
 	<link rel="stylesheet" type="text/css" href="${css}/UserRegistration.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<!-- JS, Popper.js, and jQuery -->
-	<script type="text/javascript" src="${js}/UserRegistration.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">
-	</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- meta tag -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title> Admin login</title>
-	
+	<%@include file="Header.jsp" %>	
 </head>
 <body>
 	<!-- nav bar -->
@@ -92,12 +79,12 @@
 				</div>
 			</div>
 		    ${msg}<br><br>
-			<a href="" class="mt-3">Forget password/Admin Name</a>
+			<a href="AdminGetOtpForfpass.jsp" class="btn btn-info">Forget password</a>
 			<br>
 			<br>
 			<button class="btn btn-success btn-lg" type="submit" onclick="loginValidation();">submit
 			</button>
-			<p class="text-center create"><a href="register.html">Create account</a></p>
+			<p class="text-center create"><a href="OtpValidationAdminRegistration.jsp" class="btn btn-info">Create account</a></p>
 
 	</form>
 </div>

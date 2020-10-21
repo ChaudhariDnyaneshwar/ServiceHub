@@ -14,11 +14,14 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import daointerfaceses.AdminDao;
 import daointerfaceses.DesignationDao;
 import daointerfaceses.EmailGenarateDao;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.UserDao;
 import daointerfaceses.ValidationDao;
+import pojoclasses.Admin;
+import seviceclasses.AdminDaoImplementation;
 import seviceclasses.DesignationDaoImplementation;
 import seviceclasses.EmailGenarateDaoImplementation;
 import seviceclasses.ServiceProviderDaoImplementation;
@@ -107,5 +110,14 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter
 	 ValidationDao vd=new ValidationDaoImplement(getDataSource());
 	 return vd;
  }
+//==========get Autowired for admin dao
+
+ @Bean
+  public AdminDao getAdminDao()
+  {
+	  AdminDao ad=new AdminDaoImplementation(getDataSource());
+	  return ad;
+  }
+
 
 }

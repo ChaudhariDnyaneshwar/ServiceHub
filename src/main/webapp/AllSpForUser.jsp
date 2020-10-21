@@ -13,24 +13,12 @@
 
 	<!-- CSS only -->
 	<link rel="stylesheet" type="text/css" href="${css}/UserServicesDetail.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<!-- JS, Popper.js, and jQuery -->
-	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">
-	</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-	<!-- meta tag -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+	<%@include file="Header.jsp" %>
   </head>
 
 <body class="body">
 
-
+<!-- Cheking all  session -->
 < <%
 
 response.setHeader("Cache-Control"," no-cache,no-store,must-revalidate");//HTTP 1.0
@@ -42,9 +30,10 @@ response.setHeader("Expires","0") ;//proxy server
 	response.sendRedirect("UserLogin.jsp");
 	}
 	%>
- 
+ <!-- nav bar include -->
 <%@include file="UserNav.jsp" %>
-
+<!--      -------------------------if condition to show list -->
+<jstl:if test="${not empty list }">
  <jstl:forEach items="${list}" var="list">
  <div class="fixed" >
   
@@ -71,6 +60,10 @@ response.setHeader("Expires","0") ;//proxy server
 
 	</div>
 </jstl:forEach>  
- 
+ </jstl:if>
+ <!--   ----------------------------------------------->
+   <jstl:if test="${!not empty list }">
+    Sorry any service not avaible 
+   </jstl:if>
  </body>
 </html>

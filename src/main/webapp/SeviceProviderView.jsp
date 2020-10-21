@@ -1,75 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
-  <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>  
+  <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %> 
+   <!-- decalaring spring valriable for static resources -->
+   <spring:url var="css" value="/resources/css" ></spring:url>
+   <spring:url var="image" value="/resources/image"></spring:url>
+    <spring:url var="js" value="/resources/js"></spring:url>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${css}/ServiceProviderForAdmin.css">
+	<%@ include file="Header.jsp" %>
+		<title>service provider view</title>
 </head>
 
-<body>
+<body class="body">
 
-<jstl:forEach var="list" items="${list}">
-<div class="row">
-    <div class="col-lg-3"></div>
-      <div class="col-lg-6">
-         <div class="row">
-         
-         
-<div class="panel panel-info">
-      <div class="panel-heading">
-         <h3>service provider id: ${list.sp_id}</h3>
-       <h3>First name :${list.fname}</h3>
-       <h3>Last name :${list.lname}</h3>
-      </div>
-      <div class="col-lg-6">
-      <div class="panel-body">
-      
-       <h4>mobile number is :${list.mob_number }</h4>
-     <h4>Email id is:${list.email }</h4>
-     <h4>adhar number is:: ${list.addar_number }</h4>
-     <h4>gender is :${list.gender}</h4>
-     <h4>date of birth is :${list.dateofbirth }</h4>
-     <h4>Designation Is :${list.designation}</h4>
-     <h4>specialization is:${list.specialization }</h4>
-     <h4>office address is :${list.office_address }</h4>
-     <h4>city is :${list.city }</h4>
-     <h4>tahsil is:${list.tahsil }</h4>
-     <h4>district is :${list.district}</h4>
-     <h4>state is :${list.state }</h4>
-     <h4>qualification is :${list.high_qualification}</h4>
-     <h4>university name is :${list.university_name }</h4>
-     <h4>experiance is :${list.experiance}</h4>   
-      </div>
-      </div>
-      <div class="col-lg-6">
-         Image:<br><img width="100" height="150"  src='getSPimgae?id=${list.sp_id}' class="img-thumbnail" >
-         Adhar card is:<img width="100" height="150"  src='getSpAdharImage?id=${list.sp_id}' class="img-thumbnail" >
-       <br>  Licences:<br><img width="100" height="150"  src='getSplicence?id=${list.sp_id}' class="img-thumbnail" >
-         Qualification:<br> <img width="100" height="150"  src='getSpQualificationImg?id=${list.sp_id}' class="img-thumbnail" >
-        <br>
-        <a href="deleteSp?id=${list.sp_id}" class="btn btn-danger">DELET</a> 
-        
-       </div>
-      
-    
-   </div> 
-   
-   
-   <!-- tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt -->
-       
-       <!-- ------ -->
-    </div>
-   </div>
-   
-   
-    <div class="col-lg-3"></div>
-</div>
-  </jstl:forEach>
+
+<%@include file="AdminNav.jsp" %>
+
+<jstl:if test="${not empty list}">  
+  <jstl:forEach var="list" items="${list}">
+  <div class="fixed" >
+  
+     
+	<div class="card" style="margin-left: 100px;margin-right: 100px;margin-top:50px ;border-width: 5px;" >
+		 <div class="card-body">
+		<div class="card-title font" ><b>SPID :</b>${list.sp_id}<br/><b>Name :</b> ${list.fname}  ${list.lname}</div>
+	
+	  <div class="card-text"> 	
+		<table class="table" style="text-align: left; ">
+		<tr >
+			<td colspan="3" width="300px">
+		<b>Designation :</b>${list.designation}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Experience :</b> ${list.experiance}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr><td><b>Specialization :</b>${list.specialization}</td>
+		</tr>
+		<tr>
+			<td colspan="2" width="50%"><b>Qualification :</b>${list.high_qualification}</h45>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>University :</b> ${list.university_name }
+		<!--</div>-->
+		</td></tr>
+		
+		<tr >
+			<td colspan="3">
+		<b>Mobile No :</b> ${list.mob_number }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Email :</b> ${list.email }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Adhar :</b> ${list.addar_number }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</td>
+		</tr>
+		<tr>
+		<td colspan="2">
+		<b>DOB :</b> ${list.dateofbirth }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Gender :</b> ${list.gender}&nbsp;
+		</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+		<b>Office Address :</b>${list.office_address }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		</td>
+		</tr>
+		<tr class="a">
+		<td colspan="4">
+		<b>City :</b>${list.city }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		<b>Tahsil :</b>${list.tahsil }</h45>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>District :</b> ${list.district}</h45>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>State :</b> ${list.state }</h45>
+		</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+		<b>Image :</b>&nbsp;<img src='getSPimgae?id=${list.sp_id}' width="100px" height="100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>QC :</b>&nbsp;<img src='getSpQualificationImg?id=${list.sp_id}' width="100px" height="100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Aadhar :</b>&nbsp;<img src='getSpAdharImage?id=${list.sp_id}' width="100px" height="100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Licence :</b> &nbsp;<img src='getSplicence?id=${list.sp_id}' width="100px" height="100px">
+		</td></tr>
+		<tr>
+			<td colspan="2" style="text-align: center;">
+			<a href="deleteSp?id=${list.sp_id}" class="btn btn-danger">DELET</a>
+			
+			</td>	
+			
+		</tr>
+		</table>
+		  </div>
+		</div>
+	
+	</div>
+     </jstl:forEach>
+  </jstl:if>
+  
+  <jstl:if test="${!not empty list}">
+  <br><br><h3>Sorry service provider does't available</h3>
+  </jstl:if>
 </body>
 </html>

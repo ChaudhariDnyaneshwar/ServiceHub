@@ -7,14 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-Wellcome Admine
-<a href="spregistration_request">service provider registration request</a>| |<br>
-<a href="getAllusers">all users</a>| |<br>
-<a href="getServiceProvider">Service Provider</a>||<br>
-| |<br>
-<a href="AddDesignation.jsp">Add Designation</a>||<br>
+<!-- nav bar -->
+<%@include file="AdminNav.jsp" %>
 
-
-
+<!-- body code -->
+<%@include file="SharHome.jsp" %>
 </body>
 </html>

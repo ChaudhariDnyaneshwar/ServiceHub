@@ -5,12 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<%@include file="Header.jsp" %>
 </head>
 <body>
-<!-- nav barr -->
- <%@include file="UserNav.jsp" %>
 <!--  --> 
-<%-- <% 
+ <% 
 response.setHeader("Cache-Control"," no-cache, no-store, must-revalidate");//HTTP 1.0
 response.setHeader("Pragma","no-cache");//HTTP 1.0
 response.setHeader("Expires","0") ;//proxy server
@@ -18,8 +17,11 @@ response.setHeader("Expires","0") ;//proxy server
  if(session.getAttribute("cuname")==null)
 {
 	response.sendRedirect("UserLogin.jsp");
-} --%>
+} 
  %>     
+<!-- nav barr -->
+ <%@include file="UserNav.jsp" %>
+
     wellcome  ${cuname}
   <%@include file="SharHome.jsp" %>  
 </body>

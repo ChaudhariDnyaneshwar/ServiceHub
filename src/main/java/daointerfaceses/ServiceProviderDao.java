@@ -57,4 +57,6 @@ public interface ServiceProviderDao {
 	//===get client appointment list for service provider ..
     public List<User> getClient(String spuname);
 	
+    //get updated password when service provider forget his passowrd
+    public int updateSpPassword(ServiceProvider s);
 }

@@ -87,5 +87,74 @@ public class ValidationDaoImplement  implements ValidationDao{
 		count=list.size()>0?1:0;
 		return count;
 	}
+//genrate otp
+	public String getOtp() {
+		String otp="";
+		
+		for(int i=1;i<7;i++)
+		 {
+			 int a;
+			 a=(int) (Math.random()*10);
+			 otp=otp+a;
+		 }
+		return otp;
+	}
+
+	//=========================validate user name and email for forget  password generate otp===
+	public int getValidUserEmail(Validation v) {
+
+		
+		int a=0;
+		String query="select * from user_registration where user_name='"+v.getUsername() +"' and email='"+v.getEmail()+"'";
+		
+		RowMapper<Validation> rowMapper=new RowMapper<Validation>() {
+
+			public Validation mapRow(ResultSet rs, int row) throws SQLException {
+				   Validation v=new Validation();
+				   v.setUsername(rs.getString("user_name"));
+				   v.setPassword(rs.getString("email"));
+			return v;
+			}
+		};
+		List<Validation> list=jdbctemplate.query(query, rowMapper);
+		   a=list.size()>0?1:0; 
+		return a;
+	}
+//===============this method is user for validate the service provide user name and email for forget password..
+	public int getValidSpEmailUname(Validation v) {
+		int a=0;
+String query="select * from sp_final where user_name='"+v.getUsername() +"' and email='"+v.getEmail()+"'";
+		
+		RowMapper<Validation> rowMapper=new RowMapper<Validation>() {
+
+			public Validation mapRow(ResultSet rs, int row) throws SQLException {
+				   Validation v=new Validation();
+				   v.setUsername(rs.getString("user_name"));
+				   v.setEmail(rs.getString("email"));
+			return v;
+			}
+		};
+		List<Validation> list=jdbctemplate.query(query, rowMapper);
+		   a=list.size()>0?1:0; 
+		return a;
+	}
+//===================get validate admin username and email for forget passowrd
+	public int getValidAdminEmailUname(Validation v) {
+		
+String query="select * from admin where username='"+v.getUsername() +"' and email='"+v.getEmail()+"'";
+   int a=0;		
+		RowMapper<Validation> rowMapper=new RowMapper<Validation>() {
+
+			public Validation mapRow(ResultSet rs, int row) throws SQLException {
+				   Validation v=new Validation();
+				   v.setUsername(rs.getString("username"));
+				   v.setPassword(rs.getString("email"));
+			return v;
+			}
+		};
+		List<Validation> list=jdbctemplate.query(query, rowMapper);
+		   a=list.size()>0?1:0; 
+		return a;
+	}
 
 }

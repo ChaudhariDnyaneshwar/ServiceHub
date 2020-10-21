@@ -52,6 +52,77 @@ public class UserController {
 	
 	@Autowired
 	EmailGenarateDao egd;
+
+	//=======update user password====================================
+   @RequestMapping("/UpdateUserPassword")
+	public ModelAndView getUpdateUserPassword(@RequestParam("uname")String uname,@RequestParam("pass")String pass)
+	{
+	   ModelAndView mv=new ModelAndView();
+	   User u=new User();
+	   u.setUsername(uname);
+	   u.setPassword(pass);
+	   int count=ud.updatePassword(u);
+	   System.out.println(count);
+	   if(count>0)
+	   {
+		   mv.addObject("msg","your password insertion is successfuly done..");
+	   }
+	   else
+	   {
+		   mv.addObject("msg","plse enter valide user name.."); 
+	   }
+	   mv.setViewName("UpdateUserPassword");
+	   return mv;
+	}
+	
+	
+	//====validate otp for forget password====================================
+	@RequestMapping("/validUserOtp")
+	public ModelAndView getValidUserotp(@RequestParam("otp") String otp,HttpSession session)
+	{
+	ModelAndView mv=new ModelAndView();
+	String sotp=(String) session.getAttribute("uotp");
+	  if(sotp.equals(otp))
+	  {
+		  mv.setViewName("UpdateUserPassword");
+	  }
+	  else
+	  {
+	  mv.addObject("otpmsg","plase enter valid otp");
+	  mv.setViewName("UserGetOtpFpass");
+	  }
+	  return mv;
+	}
+	
+	//=====validate user and mail id for getting forget password otp====
+	@RequestMapping("/validUserForfpass")
+	public ModelAndView getValidUser(@RequestParam("uname")String uname,@RequestParam("email")String email,HttpSession session)
+	{
+		ModelAndView mv=new ModelAndView();
+          Validation v=new Validation();
+          v.setUsername(uname);
+          v.setEmail(email);
+          int a=vd.getValidUserEmail(v);
+          if(a>0)
+          {
+        	  
+        	  String otp=vd.getOtp();
+        	  session.setAttribute("uotp",otp);
+        	  EmailGenerate eg=new EmailGenerate();
+        	  eg.setReciption(email);
+        	  eg.setSubject("Regarding otp");
+        	  eg.setMessage("your otp for forget password is  :"+otp);
+               egd.sendEmail(eg);
+          }
+          else
+          {
+        	  mv.addObject("msg","Plese enter valid user name and email id .. ");
+          }
+          mv.setViewName("UserGetOtpFpass");
+		return mv;
+		
+	}
+	
 	
 	//==========do user validation and maintain session..
 	

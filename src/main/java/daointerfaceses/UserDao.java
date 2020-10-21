@@ -18,4 +18,7 @@ public interface UserDao {
 	 
 	//== insert the appoinment ....
 	 public int addAppoinment(Appoinment a);
+	 
+	 //=======update user password when it forget password
+	 public int updatePassword(User u);
 }

@@ -276,6 +276,13 @@ List<ServiceProvider>	list=	jdbctemp.query("select * from sp_request",rowMapper)
 		List<User>	list=jdbctemp.query(query,rowMapper);
 		return list;
 	}
+//=======================update service provider password when service provider forget password..
+	public int updateSpPassword(ServiceProvider s) {
+		// TODO Auto-generated method stub
+		String query="UPDATE sp_final SET password='"+s.getPssword()+"'WHERE user_name='"+s.getUser_name()+"'"; 
+		 int a=jdbctemp.update(query);
+		return a;
+	}
 
 	//===============================================================================================
 }

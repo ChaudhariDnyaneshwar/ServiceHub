@@ -12,19 +12,8 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="${css}/Home.css">
 	<link rel="stylesheet" type="text/css" href="${css}/UserRegistration.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<!-- JS, Popper.js, and jQuery -->
-	<script type="text/javascript" src="${js}/UserRegistration.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">
-	</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- meta tag -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title> Service Provider login</title>
+	<%@ include file="Header.jsp" %>
+		<title> Service Provider login</title>
 	
 </head>
 <body>
@@ -93,7 +82,7 @@
 			</div>
 		      ${msg}<br>
 		      ${rmsg}<br>
-			<a href="#" class="mt-3">Forget password/Service provider Name</a>
+			<a href="SpGetOtpForFpass.jsp" class="btn btn-info">Forget password</a>
 			<br>
 			<br>
 			<button class="btn btn-success btn-lg" type="submit" onclick="loginValidation();">submit

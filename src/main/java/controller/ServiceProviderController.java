@@ -32,6 +32,76 @@ public class ServiceProviderController {
 
 	@Autowired
 	EmailGenarateDao egd;
+	
+	//
+	@RequestMapping("/UpdateSpPassword")
+	public ModelAndView updateSpPassword(@RequestParam("uname")String uname,@RequestParam("pass")String password)
+	{
+		ModelAndView mv=new ModelAndView();
+		ServiceProvider sp=new ServiceProvider();
+		sp.setUser_name(uname);
+		sp.setPssword(password);
+		int count=spd.updateSpPassword(sp);
+		if(count>0)
+		{
+			mv.addObject("msg","your password is updated successfully..");
+		}
+		else
+		{
+			mv.addObject("msg","Sorry,your password updation is faield.");
+		}
+		return mv;
+	}
+	
+	
+	//validate the otp of service provider for update password when sp forget password
+	@RequestMapping("/validSpOtp")
+	public ModelAndView validateSpOtp(@RequestParam("otp")String otp,HttpSession session)
+	{
+		ModelAndView mv=new ModelAndView();
+		String spotp=(String)session.getAttribute("spotp");
+		if(spotp.equals(otp))
+		  {
+			  mv.setViewName("UpdateSpPassword");
+		  }
+		  else
+		  {
+		  mv.addObject("otpmsg","plase enter valid otp");
+		  mv.setViewName("SpGetOtpForFpass");
+		  }
+		return mv;
+	}
+	
+	
+	// validate service provider email id and username and send otp mail 
+	@RequestMapping("/validSpForfpass")
+	public ModelAndView getValidateSpEmailUname(@RequestParam("uname")String uname,@RequestParam("email")String email,HttpSession session)
+	{
+		
+		ModelAndView mv=new ModelAndView();
+		Validation v=new Validation();
+		v.setUsername(uname);
+		v.setEmail(email);
+		int count=vd.getValidSpEmailUname(v);
+		
+		if(count>0)
+		{
+			String otp=vd.getOtp();
+      	  session.setAttribute("spotp",otp);
+      	  EmailGenerate eg=new EmailGenerate();
+      	  eg.setReciption(email);
+      	  eg.setSubject("Regarding otp");
+      	  eg.setMessage("your otp for forget password is  :  "+otp);
+             egd.sendEmail(eg);
+		}
+		else
+		{
+			mv.addObject("msg","Plese enter valid user name and email id .. ");
+		}
+		mv.setViewName("SpGetOtpForFpass");
+		return mv;
+	}
+	
 	//====================service provider login validation and maintain session
 	
 	 @RequestMapping("/ServiceProviderLogin")
@@ -135,7 +205,10 @@ public class ServiceProviderController {
 			egd.sendEmail(eg);
 			
 		}
+		else
+		{
 		mv.addObject("rmsg","your reqeust is field..");
+		}
 		mv.setViewName("SeviceProviderLogin");
 		return mv;
 	}

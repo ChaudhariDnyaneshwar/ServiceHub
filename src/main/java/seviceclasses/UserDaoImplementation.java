@@ -85,6 +85,13 @@ public class UserDaoImplementation implements UserDao {
 		return count;
 	}
 
+//======update user password======================
+	public int updatePassword(User u) {
+	  String query="UPDATE user_registration SET password='"+u.getPassword()+"'WHERE user_name='"+u.getUsername()+"'"; 
+			 int a=jdbctemplate.update(query);
+		return a;
+		}
+
 //=======================================================================
 
 
