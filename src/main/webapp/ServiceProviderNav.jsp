@@ -37,19 +37,19 @@
       
       
       <li class="nav-item">
-        <a class="nav-link" href="About.jsp">About Us</a>
+        <a class="nav-link" href="ServiceProviderAbout.jsp">About Us</a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="Contact.jsp">Contact</a>
+        <a class="nav-link" href="ServiceProviderContact.jsp">Contact</a>
       </li>
        
         
        <li class="nav-item">
-        <a class="nav-link" href="Contact.jsp">Profile</a>
+        <a class="nav-link" href="#">Profile</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="Contact.jsp">LogOut</a>
+        <a class="nav-link" href="serviceProviderLogout">LogOut</a>
       </li>   
       
     </ul>

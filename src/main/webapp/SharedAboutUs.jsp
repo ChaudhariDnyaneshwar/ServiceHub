@@ -27,7 +27,7 @@
 				<h4>Explore New Life</h4>
 				<h1 class="heading1 about-animate">We Are A Team Of Experts <br>In This Field...</h1>
 				<p  class="about-info">We work for establishment of communication between different service provider and user/ client.We bring multiple service provider at one place for user convinience.</p>
-				<a href="index.html"><button class="btn btn-danger btn-lg">Get started  <i class="fa fa-plus"></i> </button></a>
+				
 			</div>
 		</div>
 

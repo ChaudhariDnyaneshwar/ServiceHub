@@ -57,7 +57,7 @@ if(session.getAttribute("cuname")==null)
 			<div class="panel-body"><b>Email :</b> ${list.email }</div>
 			<div class="panel-body ">
 			<b>Office Address :</b> ${list.office_address }</div>
-		<br><br>    <a href="getAppointmentDrsp?cuname=${cuname}&spuname=${list.user_name}"  class="btn btn-info">Appointment</a>
+		  <div class="panel-body" >  <a href="getAppointmentDrsp?cuname=${cuname}&spuname=${list.user_name}"  class="btn btn-info">Appointment</a></div>  
 		</div>
 
 	</div>

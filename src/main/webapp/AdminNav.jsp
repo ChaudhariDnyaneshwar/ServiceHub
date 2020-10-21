@@ -46,11 +46,11 @@
         <a class="nav-link" href="getAllusers">User</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="About.jsp">About Us</a>
+        <a class="nav-link" href="AdminAbout.jsp">About Us</a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="Contact.jsp">Contact</a>
+        <a class="nav-link" href="AdminContact.jsp">Contact</a>
       </li>
      
       

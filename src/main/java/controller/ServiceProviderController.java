@@ -33,7 +33,19 @@ public class ServiceProviderController {
 	@Autowired
 	EmailGenarateDao egd;
 	
-	//
+	//======================  service provider logout /end login session
+	  
+	   @RequestMapping("/serviceProviderLogout")
+	   public ModelAndView spLogout(HttpSession session)
+	   {
+		   ModelAndView mv=new ModelAndView();
+		   session.removeAttribute("sp_uname");
+	    	session.invalidate();
+		   mv.setViewName("SeviceProviderLogin");
+		   return mv;
+	   }
+	
+	//=========================update password===============================
 	@RequestMapping("/UpdateSpPassword")
 	public ModelAndView updateSpPassword(@RequestParam("uname")String uname,@RequestParam("pass")String password)
 	{
@@ -59,6 +71,7 @@ public class ServiceProviderController {
 	public ModelAndView validateSpOtp(@RequestParam("otp")String otp,HttpSession session)
 	{
 		ModelAndView mv=new ModelAndView();
+		session.setAttribute("spuotp", otp);
 		String spotp=(String)session.getAttribute("spotp");
 		if(spotp.equals(otp))
 		  {

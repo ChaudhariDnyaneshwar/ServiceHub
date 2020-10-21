@@ -15,6 +15,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+
+response.setHeader("Cache-Control"," no-cache, no-store, must-revalidate");//HTTP 1.0
+response.setHeader("Pragma","no-cache");//HTTP 1.0
+response.setHeader("Expires","0") ;//proxy server
+if(session.getAttribute("spuotp")==null)
+	{
+	response.sendRedirect("SpGetOtpForFpass.jsp");
+	}
+	%>
+
+
 <!-- nav bar -->
 
 <nav class="navbar navbar-expand-lg sticky-top">

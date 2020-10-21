@@ -31,11 +31,11 @@
         <a class="nav-link" href="UserHome.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="About.jsp">About Us</a>
+        <a class="nav-link" href="UserAbout.jsp">About Us</a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="Contact.jsp">Contact</a>
+        <a class="nav-link" href="UserContact.jsp">Contact</a>
       </li>
           
     <li class="nav-item">

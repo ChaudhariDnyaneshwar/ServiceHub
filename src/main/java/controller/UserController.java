@@ -81,6 +81,7 @@ public class UserController {
 	public ModelAndView getValidUserotp(@RequestParam("otp") String otp,HttpSession session)
 	{
 	ModelAndView mv=new ModelAndView();
+	session.setAttribute("uu_otp",otp);
 	String sotp=(String) session.getAttribute("uotp");
 	  if(sotp.equals(otp))
 	  {
