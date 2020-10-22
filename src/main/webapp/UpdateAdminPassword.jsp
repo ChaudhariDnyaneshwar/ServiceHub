@@ -16,6 +16,17 @@
 </head>
 <body>
 <!-- nav bar -->
+<%
+
+response.setHeader("Cache-Control"," no-cache,no-store,must-revalidate");//HTTP 1.0
+response.setHeader("Pragma","no-cache");//HTTP 1.0
+response.setHeader("Expires","0") ;//proxy server
+  
+  if(session.getAttribute("auotp")==null)
+	{
+	response.sendRedirect("AdminGetOtpForfpass.jsp");
+	}
+	%>
 
 <nav class="navbar navbar-expand-lg sticky-top">
   <a class="navbar-brand" href="#">

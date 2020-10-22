@@ -52,10 +52,14 @@
       <li class="nav-item">
         <a class="nav-link" href="AdminContact.jsp">Contact</a>
       </li>
-     
+
+       <li class="nav-item">
+        <a class="nav-link" href="getAdminProfile">Profile</a>
+      </li>
+            
       
       <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
+        <a class="nav-link" href="adminLogout">Logout</a>
       </li>
       
       

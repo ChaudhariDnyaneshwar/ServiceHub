@@ -16,6 +16,17 @@
 </head>
 
 <body class="body">
+ <%
+
+response.setHeader("Cache-Control"," no-cache,no-store,must-revalidate");//HTTP 1.0
+response.setHeader("Pragma","no-cache");//HTTP 1.0
+response.setHeader("Expires","0") ;//proxy server
+  
+  if(session.getAttribute("auname")==null)
+	{
+	response.sendRedirect("AdminLogin.jsp");
+	}
+	%>
  
  
  <%@include file="AdminNav.jsp" %>
@@ -48,7 +59,7 @@
 		
 		<tr >
 			<td colspan="3">
-		<b>Mobile No :</b> ${list.mob_number }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<b>Mobile No :</b> ${list.mob_number}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<b>Email :</b> ${list.email }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<b>Adhar :</b> ${list.addar_number }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>

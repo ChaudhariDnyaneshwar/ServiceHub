@@ -63,14 +63,14 @@
 			</div>
 		</div>
 		<div class="col-sm-6">
-			<form class="text-center">
+			<form class="text-center" action="insertFeedback">
 				<h1 class="heading1"><u>Get In Touch</u></h1>
 				<input type="text" name="name" class="form-control mb-3" placeholder="user name/Company name">
-				<select class="form-control mb-3">
-					<option>User</option>
-					<option>Service Provider</option>
+				<select class="form-control mb-3" name="position">
+					<option value="user" >User</option>
+					<option value="service provider">Service Provider</option>
 				</select>
-				<textarea class="form-control mb-3" placeholder="Enter Your Message" cols="10" rows="10"></textarea>
+				<textarea class="form-control mb-3"  placeholder="Enter Your Message" cols="10" rows="10" name="feedback"></textarea>
 				<button class="btn btn-success btn-lg btn-floating btn-block">Submit</button>
 			</form>
 

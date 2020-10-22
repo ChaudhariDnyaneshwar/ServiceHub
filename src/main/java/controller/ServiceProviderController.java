@@ -1,10 +1,17 @@
 package controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +39,36 @@ public class ServiceProviderController {
 
 	@Autowired
 	EmailGenarateDao egd;
+	//=======get service provider profile=====
 	
+     @RequestMapping("/getSpProfile")
+     public ModelAndView getSpProfile(HttpSession session)
+     {
+    	 System.out.println("its here");
+    	 ModelAndView mv=new ModelAndView();
+    	String uname=(String)session.getAttribute("sp_uname");
+    	ServiceProvider sp=new ServiceProvider();
+    	sp.setUser_name(uname);
+    	List<ServiceProvider> list=spd.getSpProfile(sp);
+    	mv.addObject("list",list);
+    	mv.setViewName("ServiceProviderProfite");
+    	return mv;
+     }
+	//====get image of service provider for profile===
+     @RequestMapping("/getImageSpProfile")
+     public void getSpImageProfile(HttpServletResponse response,HttpSession session) throws SQLException, IOException
+     {
+    	 System.out.println("its there");
+    	 String uname=(String)session.getAttribute("sp_uname");
+    	 ServiceProvider s=new ServiceProvider();
+    	 s.setUser_name(uname);
+    	 response.setContentType("image/jpeg/jpg"); 
+ 		Blob image=spd.getSpImageProfile(s);
+ 		byte[] photo=image.getBytes(1,(int)image.length());
+ 		InputStream inputstream=new ByteArrayInputStream(photo);
+ 		IOUtils.copy(inputstream, response.getOutputStream());
+     }
+     
 	//======================  service provider logout /end login session
 	  
 	   @RequestMapping("/serviceProviderLogout")

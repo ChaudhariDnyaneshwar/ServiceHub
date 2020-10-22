@@ -14,6 +14,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="${css}/UserRegistration.css">
 	<link rel="stylesheet" type="text/css" href="${css}/Home.css">
+	<script src="${js}/UserRegistration.js"></script>
    <%@include file="Header.jsp" %>
 	<title>create account</title>
 </head>

@@ -52,7 +52,19 @@ public class UserController {
 	
 	@Autowired
 	EmailGenarateDao egd;
-
+//========================show user profile=====================
+	@RequestMapping("/getUserProfile")
+	public ModelAndView getUserProfile(HttpSession session)
+	{
+		ModelAndView mv=new ModelAndView();
+		String uname=(String)session.getAttribute("cuname");
+		User u=new User();
+		u.setUsername(uname);
+		List<User> list=ud.getUserProfile(u);
+		mv.addObject("list",list);
+		mv.setViewName("UserProfile");
+		return mv;
+	}
 	//=======update user password====================================
    @RequestMapping("/UpdateUserPassword")
 	public ModelAndView getUpdateUserPassword(@RequestParam("uname")String uname,@RequestParam("pass")String pass)

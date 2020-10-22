@@ -21,4 +21,7 @@ public interface UserDao {
 	 
 	 //=======update user password when it forget password
 	 public int updatePassword(User u);
+	 
+	 //get user profile details
+	 public List<User> getUserProfile(User u);
 }

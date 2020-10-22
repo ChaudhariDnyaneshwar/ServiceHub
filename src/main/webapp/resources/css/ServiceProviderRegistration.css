@@ -3,9 +3,10 @@
 
 .form-header  {
  
-  background:linear-gradient(to right, #78a7ba 0%, #385D6C 50%, #78a7ba 99%);
+  background:#ef8172;;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
+  margin-top:50px;
 }
 
 .form-header h1 {
@@ -19,9 +20,9 @@
 /* Form Body */
 /*---------------------------------------*/
 .form-body {
-	background:linear-gradient(to right, #78a7ba 0%, #385D6C 50%, #78a7ba 99%);
+	background:#ef8172;;
     padding:10px 40px;
-    color:#666;
+    color:white;
   }
   
   .form-group{
@@ -131,29 +132,16 @@
    color:#d9d9d9;
    
   }
-  
-  
-  /* Form Footer */
  
-  .form-footer {
-   clear:both;
-   
-   
-  }
-
+ .button
+ {
+   margin-top:15px;
+   margin-left:350px;
+   border-radius:30px;
+ } 
+ 
   
-  .form-footer{
-  
-    margin-left: 260px;
-    margin-top: 25px;
-    font-style: italic;
-    float:left;
-    font-weight: thin;
-    background:linear-gradient(to right, #78a7ba 0%, #385D6C 50%, #78a7ba 99%);
-   
-    color:#666;
-  }
-  .btn {
+   .btn {
      display:inline-block;
      padding:10px 20px;
      

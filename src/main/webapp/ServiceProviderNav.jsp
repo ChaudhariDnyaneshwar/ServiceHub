@@ -46,7 +46,7 @@
        
         
        <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="getSpProfile">Profile</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="serviceProviderLogout">LogOut</a>

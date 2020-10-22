@@ -92,6 +92,34 @@ public class UserDaoImplementation implements UserDao {
 		return a;
 		}
 
+
+	public List<User> getUserProfile(User u) {
+		String query="select * from user_registration where user_name=?";
+		RowMapper<User> rowMapper=new RowMapper<User>() {
+
+			public User mapRow(ResultSet request, int row) throws SQLException {
+				User us = new User();
+				us.setUid(request.getInt("userId"));
+				us.setFname(request.getString("fname"));
+				us.setLname(request.getString("lname"));
+				us.setEmail(request.getString("email"));
+				us.setMobilenumber(request.getString("mobile_no"));
+				us.setGender(request.getString("gender"));
+				us.setAddress(request.getString("address"));
+				us.setCity(request.getString("city"));
+				us.setTahasil(request.getString("tahsil"));
+				us.setDistrict(request.getString("dist"));
+				us.setState(request.getString("state"));
+				us.setDateofbirth(request.getString("date_of_birth"));
+
+
+				return us;
+			}
+		};
+		List<User> list=jdbctemplate.query(query,new Object[]{u.getUsername()}, rowMapper);
+		return list;
+	}
+
 //=======================================================================
 
 

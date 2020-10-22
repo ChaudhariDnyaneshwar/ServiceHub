@@ -13,6 +13,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="${css}/ServiceProviderRegistration.css">
 	<link rel="stylesheet" type="text/css" href="${css}/Home.css">
+	<script src="${js}/ServiceProviderRegistration.js"></script>
    <%@include file="Header.jsp" %>
 	<title>create account</title>
 </head>
@@ -46,7 +47,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="AdminLogin.jsp">Admin</a>
           <a class="dropdown-item" href="UserLogin.jsp">User</a>
-          <a class="dropdown-item" href="ServiceProviderLogin.jsp">Service Provider</a>
+          <a class="dropdown-item" href="SeviceProviderLogin.jsp">Service Provider</a>
         </div>
       </li>
       
@@ -75,7 +76,7 @@
           </div>
           <div class="col-lg-6">
             <label for="lastname" class="label-title">Last name *</label>
-            <input type="text" id="lname" name="lname" class="form-input" placeholder="enter your last name" />
+            <input type="text" id="lname" name="lname" class="form-input" placeholder="enter your last name"  required/>
           </div>
         </div>
 
@@ -138,7 +139,7 @@
 
   
     <div  class="col-lg-6">
-  <label for="date"  class="label-title">Date Of Birth *</label>
+  <label for="date"  class="label-title" >Date Of Birth *</label>
   
   <input type="Date" id="date" name="date" class="form-input" required="required" />
   </div>
@@ -153,7 +154,7 @@
 
 
      <label for="adrress"class="label-title">Enter Office Adrress *</label>
-    <textarea  cols="80" rows="5" id="address"  class="form-input1" name="address" placeholder="Write something.." >
+    <textarea  cols="80" rows="4" id="address"  class="form-input1" name="address" placeholder="Write something.." required>
      </textarea> 
  
 </div> 
@@ -170,7 +171,7 @@
 
     <div c class="col-lg-6">
       <label for="taluka" class="label-title">Tehsil *</label>
-      <input type="text" id="Taluka" class="form-input" name="taluka" placeholder="enter your tehsil" />
+      <input type="text" id="Taluka" class="form-input" name="taluka" placeholder="enter your tehsil" required/>
     </div>
   </div>
 
@@ -184,7 +185,7 @@
     <div  class="col-lg-6">
 
       <label for="state" class="label-title">State *</label>
-      <select id="state" name="state"  class="form-input">
+      <select id="state" name="state"  class="form-input" required>
         <option value="Maharashtra">Maharashtrah</option>
         <option value="Haryana">Haryana</option>
         <option value="Utterpardesh">Utterpardesh</option>
@@ -202,13 +203,13 @@
   <div class="row">
     <div  class="col-lg-6">
       <label for="quali" class="label-title">Highst Qualification *</label>
-      <input type="text" id="uni" class="form-input" name="hqualification" placeholder="enter your Qualification" />
+      <input type="text" id="uni" class="form-input" name="hqualification" placeholder="enter your Qualification" required />
       
           </div>
 
     <div  class="col-lg-6">
       <label for="uni" class="label-title">Enter University Name *</label>
-      <input type="text" id="uni" class="form-input" name="univercity" placeholder="enter your Univercity name" />
+      <input type="text" id="uni" class="form-input" name="univercity" placeholder="enter your Univercity name" required/>
     </div>
   </div>
   
@@ -220,7 +221,7 @@
         
             <div  class="col-lg-6">
             <label  for="exp" class="label-title">Experince Year *</label>
-                <select class="form-input" id="exp" name="experiance">
+                <select class="form-input" id="exp" name="experiance" required>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -237,7 +238,7 @@
   <!--   specialization -->
     <div class="col-lg-6">
      <label for="spec"class="label-title">Enter Specilization *</label>
-    <textarea  cols="80" rows="5" id="spec"  class="form-input1" name="specialization" placeholder="Write something.." >
+    <textarea  cols="80" rows="5" id="spec"  class="form-input1" name="specialization" placeholder="Write your specialization" required="required" >
      </textarea> 
       </div> 
   </div>
@@ -247,14 +248,14 @@
          
           <div class="col-lg-6">
             <label for="Upload" class="label-title">Licence certificate *</label>
-            <input type="file" id="upload"  name="licence" size="80">
+            <input type="file" id="upload"  name="licence" size="80" required>
           </div>
              
         <!-- Highest  Certificate -->
         
           <div class="col-lg-6" >
             <label for="upload" class="label-title">Highest Qualification certificate *</label>
-            <input type="file" id="upload" name="qualification" size="80">
+            <input type="file" id="upload" name="qualification" size="80" required>
           </div>
         </div>  
         
@@ -264,18 +265,21 @@
   
             <div  class="col-lg-6" >
               <label for="upload" class="label-title">Upload Photo *</label>
-              <input type="file" id="upload" name="photo" size="80">
+              <input type="file" id="upload" name="photo" size="80" required>
              </div>
       
   
       <!-- upload Adhar Card -->     
        <div  class="col-lg-6">
                 <label for="upload" class="label-title">Upload adhar card*</label>
-                <input type="file" id="upload" name="adhard" size="80">
+                <input type="file" id="upload" name="adhard" size="80" required>
               </div>
       
          </div>  
             
+             
+             
+             
              <div class="row">
            
             <!-- licence certificate -->
@@ -301,14 +305,14 @@
       <label for="lastname" class="label-title">Confirm Password *</label>
       <input type="password" id="password2" name="password2" class="form-input" placeholder="enter your confirm password" />
     </div>
-  
+   <div class="button">
+    <button type="submit"  value="Request"  class="btn btn-success">Send Registration Request </button>
+    </div>
   </div>
+   
 </div>
 
-      <!-- form-footer -->
-      <div class="form-footer">  
-        <button type="submit"  value="Request"  class="btn btn-success">Send Registration Request </button>
-      </div>
+     
       
     </form>
 <!-- Form is End -->

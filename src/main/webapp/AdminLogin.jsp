@@ -11,6 +11,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="${css}/Home.css">
 	<link rel="stylesheet" type="text/css" href="${css}/UserRegistration.css">
+	  <script src="${js}/UserRegistration.js"></script> 
 	<%@include file="Header.jsp" %>	
 </head>
 <body>
@@ -40,7 +41,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="AdminLogin.jsp">Admin</a>
           <a class="dropdown-item" href="UserLogin.jsp">User</a>
-          <a class="dropdown-item" href="ServiceProviderLogin.jsp">Service Provider</a>
+          <a class="dropdown-item" href="SeviceProviderLogin.jsp">Service Provider</a>
         </div>
       </li>
        
@@ -79,12 +80,15 @@
 				</div>
 			</div>
 		    ${msg}<br><br>
-			<a href="AdminGetOtpForfpass.jsp" class="btn btn-info">Forget password</a>
+			
 			<br>
 			<br>
-			<button class="btn btn-success btn-lg" type="submit" onclick="loginValidation();">submit
+			
+			<p class="text-center create">
+			<button class="btn btn-success" type="submit" onclick="loginValidation();">submit
 			</button>
-			<p class="text-center create"><a href="OtpValidationAdminRegistration.jsp" class="btn btn-info">Create account</a></p>
+			<a href="AdminGetOtpForfpass.jsp" class="btn btn-info">Forget password</a>
+			<a href="OtpValidationAdminRegistration.jsp" class="btn btn-info">Create account</a></p>
 
 	</form>
 </div>

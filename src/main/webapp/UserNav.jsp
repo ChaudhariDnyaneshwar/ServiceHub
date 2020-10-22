@@ -43,7 +43,7 @@
       </li>
     
     <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="getUserProfile">Profile</a>
       </li>
     
     <li class="nav-item">

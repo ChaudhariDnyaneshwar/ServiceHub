@@ -51,6 +51,31 @@ public class AdminController {
 	@Autowired
 	AdminDao admin;
 	
+	
+	//get Admint profile
+	@RequestMapping("/getAdminProfile")
+	public ModelAndView getAdminProfile(HttpSession session)
+	{
+		ModelAndView mv=new ModelAndView();
+		String uname=(String)session.getAttribute("auname");
+	     Admin a=new Admin();
+	     a.setUsername(uname);
+	    List<Admin> list= admin.getAdminProfile(a);
+	     mv.addObject("list",list);
+	     mv.setViewName("AdminProfile");
+		return mv;
+	}
+	
+  //Admin logout or admin username session exite
+	@RequestMapping("/adminLogout")
+  	public ModelAndView getAdminLogout(HttpSession session)
+	{
+		ModelAndView mv=new ModelAndView();
+		session.removeAttribute("auname");
+    	session.invalidate();
+    	mv.setViewName("AdminLogin");
+		return mv;
+	}
 	//updating admin password
 	@RequestMapping("/UpdateAdminPassword")
 	public ModelAndView updateAdminPassword(@RequestParam("uname")String uname,@RequestParam("pass")String pass)
@@ -150,6 +175,7 @@ public class AdminController {
    public ModelAndView getvalidateOtp(HttpSession session,@RequestParam("otp")String otp)
    {
 		ModelAndView mv=new ModelAndView();
+		session.setAttribute("auotp",otp);
 		String sotp=(String)session.getAttribute("aotp");
 		if(sotp.equals(otp))
 		{

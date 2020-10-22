@@ -91,7 +91,7 @@ public class ServiceProviderDaoImplementation implements ServiceProviderDao {
 	public Blob getSpImage(int id) {
 		
 		
-String query="select photo from sp_final where spId=?";
+      String query="select photo from sp_final where spId=?";
 		
 		Blob photo=jdbctemp.queryForObject(query, new Object[]{id}, Blob.class);
 		return photo;
@@ -282,6 +282,41 @@ List<ServiceProvider>	list=	jdbctemp.query("select * from sp_request",rowMapper)
 		String query="UPDATE sp_final SET password='"+s.getPssword()+"'WHERE user_name='"+s.getUser_name()+"'"; 
 		 int a=jdbctemp.update(query);
 		return a;
+	}
+
+	//get service provider profile..
+	
+	public List<ServiceProvider> getSpProfile(ServiceProvider s) {
+		
+		String query="select * from sp_final where user_name=?";
+		
+		RowMapper<ServiceProvider> rowMapper=new RowMapper<ServiceProvider>() {
+
+			public ServiceProvider mapRow(ResultSet request, int row) throws SQLException {
+				 ServiceProvider sp=new ServiceProvider();
+				sp.setFname(request.getString("fname"));
+				sp.setLname(request.getString("lname"));
+				sp.setMob_number(request.getString("mob_number"));
+				sp.setEmail(request.getString("email"));
+				sp.setSpecialization(request.getString("specialization"));
+				sp.setOffice_address(request.getString("address"));
+				sp.setDesignation(request.getString("designation"));
+				sp.setExperiance(request.getString("experiance"));
+				return sp;
+			}
+		};
+		
+		List<ServiceProvider> list=jdbctemp.query(query,new  Object[]{s.getUser_name()} ,rowMapper);
+		return list;
+	}
+//get service provider image for profile=============
+	public Blob getSpImageProfile(ServiceProvider s) {
+		
+String query="select photo from sp_final where user_name=?";
+		
+		Blob photo=jdbctemp.queryForObject(query, new Object[]{s.getUser_name()}, Blob.class);
+		return photo;
+
 	}
 
 	//===============================================================================================

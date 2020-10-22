@@ -12,7 +12,8 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="${css}/Home.css">
 	<link rel="stylesheet" type="text/css" href="${css}/UserRegistration.css">
-	<%@ include file="Header.jsp" %>
+	<script src="${js}/UserRegistration.js"></script>
+ 	<%@ include file="Header.jsp" %>
 		<title> Service Provider login</title>
 	
 </head>
@@ -82,12 +83,15 @@
 			</div>
 		      ${msg}<br>
 		      ${rmsg}<br>
-			<a href="SpGetOtpForFpass.jsp" class="btn btn-info">Forget password</a>
+			
 			<br>
 			<br>
-			<button class="btn btn-success btn-lg" type="submit" onclick="loginValidation();">submit
+			
+			<p class="text-center create">
+			<button class="btn btn-success " type="submit" onclick="loginValidation();">submit
 			</button>
-			<p class="text-center create"><a href="Seviceprovider" class="btn btn-info">Create account</a></p>
+			<a href="SpGetOtpForFpass.jsp" class="btn btn-info">Forget password</a>
+			<a href="Seviceprovider" class="btn btn-info">Create account</a></p>
 		
 
 	</form>

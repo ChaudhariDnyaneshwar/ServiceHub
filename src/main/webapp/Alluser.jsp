@@ -9,6 +9,18 @@
 <title>All user</title>
 </head>
 <body >
+<%
+
+response.setHeader("Cache-Control"," no-cache,no-store,must-revalidate");//HTTP 1.0
+response.setHeader("Pragma","no-cache");//HTTP 1.0
+response.setHeader("Expires","0") ;//proxy server
+  
+  if(session.getAttribute("auname")==null)
+	{
+	response.sendRedirect("AdminLogin.jsp");
+	}
+	%>
+
 
 <%@ include file="AdminNav.jsp" %>
 <table class="table table-striped" style="width:1800px;margin-top:50px;margin-left:80px;background-color:#f0e9e6;">

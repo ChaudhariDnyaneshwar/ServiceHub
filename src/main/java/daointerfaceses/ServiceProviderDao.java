@@ -59,4 +59,13 @@ public interface ServiceProviderDao {
 	
     //get updated password when service provider forget his passowrd
     public int updateSpPassword(ServiceProvider s);
+
+   //get service provider profile==========================
+    
+    public List<ServiceProvider> getSpProfile(ServiceProvider s);
+
+   //get service provider image for profile====
+     
+    public Blob getSpImageProfile(ServiceProvider s);
+
 }
