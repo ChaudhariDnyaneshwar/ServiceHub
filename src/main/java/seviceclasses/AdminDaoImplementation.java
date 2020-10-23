@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import daointerfaceses.AdminDao;
 import pojoclasses.Admin;
+import pojoclasses.Feedback;
 
 public class AdminDaoImplementation implements AdminDao {
 
@@ -59,6 +60,45 @@ public class AdminDaoImplementation implements AdminDao {
 		
 		List<Admin> list=jdbctemplate.query(query,new Object[]{a.getUsername()}, rowMapper);
 		return list;
+	}
+
+//inset feedback 
+	public int insetFeedback(Feedback f) {
+ 
+		 String query="insert into feedback values(?,?,?,?,?,?)";
+		int a= jdbctemplate.update(query,null,f.getName(),f.getPosition(),f.getFeedback(),f.getMail(),f.getMob());
+		return a;
+	}
+
+
+	public List<Feedback> getFeedback() {
+		
+		String query="select * from feedback";
+		
+		RowMapper<Feedback> rowMapper=new RowMapper<Feedback>() {
+
+			public Feedback mapRow(ResultSet request, int arg1) throws SQLException {
+				   Feedback f=new Feedback();
+				   f.setFid(request.getInt("fid"));
+				   f.setName(request.getString("name"));
+				   f.setPosition(request.getString("position"));
+				   f.setFeedback(request.getString("message"));
+				   f.setMob(request.getString("mobile_number"));
+				   f.setMail(request.getString("email"));
+				return f;
+			}
+		};
+		List<Feedback> list=jdbctemplate.query(query, rowMapper);
+		
+		return list;
+	}
+
+
+	public int deletFeedback(Feedback f) {
+		// TODO Auto-generated method stub
+		String query="delete from feedback where fid=?";
+		  int a=jdbctemplate.update(query,f.getFid());  
+		return a;
 	}
 	
 

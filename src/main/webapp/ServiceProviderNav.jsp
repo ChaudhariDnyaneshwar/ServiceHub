@@ -40,9 +40,6 @@
         <a class="nav-link" href="ServiceProviderAbout.jsp">About Us</a>
       </li>
       
-      <li class="nav-item">
-        <a class="nav-link" href="ServiceProviderContact.jsp">Contact</a>
-      </li>
        
         
        <li class="nav-item">

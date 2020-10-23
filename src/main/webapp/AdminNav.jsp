@@ -49,10 +49,11 @@
         <a class="nav-link" href="AdminAbout.jsp">About Us</a>
       </li>
       
-      <li class="nav-item">
-        <a class="nav-link" href="AdminContact.jsp">Contact</a>
+   <li class="nav-item">
+        <a class="nav-link" href="getFeedback">Feedback</a>
       </li>
-
+   
+      
        <li class="nav-item">
         <a class="nav-link" href="getAdminProfile">Profile</a>
       </li>

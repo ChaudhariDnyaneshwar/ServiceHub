@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import daointerfaceses.AdminDao;
 import daointerfaceses.EmailGenarateDao;
 import daointerfaceses.ServiceProviderDao;
 import daointerfaceses.ValidationDao;
 import pojoclasses.EmailGenerate;
+import pojoclasses.Feedback;
 import pojoclasses.ServiceProvider;
 import pojoclasses.User;
 import pojoclasses.Validation;
@@ -39,6 +41,11 @@ public class ServiceProviderController {
 
 	@Autowired
 	EmailGenarateDao egd;
+    
+	@Autowired
+	 AdminDao admin;
+	
+	
 	//=======get service provider profile=====
 	
      @RequestMapping("/getSpProfile")

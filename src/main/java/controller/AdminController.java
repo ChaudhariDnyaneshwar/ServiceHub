@@ -26,6 +26,7 @@ import daointerfaceses.ValidationDao;
 import pojoclasses.Admin;
 import pojoclasses.Designation;
 import pojoclasses.EmailGenerate;
+import pojoclasses.Feedback;
 import pojoclasses.ServiceProvider;
 import pojoclasses.User;
 import pojoclasses.Validation;
@@ -51,7 +52,53 @@ public class AdminController {
 	@Autowired
 	AdminDao admin;
 	
+	//get feedbcak list from database==================
+	@RequestMapping("/getFeedback")
+	public ModelAndView getFeedback()
+	{
+		ModelAndView mv=new ModelAndView();
+		List<Feedback> list=admin.getFeedback();
+		mv.addObject("list",list);
+		mv.setViewName("Feedback");
+		return mv;
+	}
 	
+	//delete feedback for database
+	@RequestMapping("/deleteFeedback")
+	public ModelAndView deletFeedback(@RequestParam("fid")int fid)
+	{
+		ModelAndView mv=new ModelAndView();
+		Feedback f=new Feedback();
+		f.setFid(fid);
+		int a=admin.deletFeedback(f);
+		mv.setViewName("redirect:/getFeedback");
+		return mv;
+	}
+	
+	
+	//insert feedback
+	 @RequestMapping("/insertFeedback")
+	public ModelAndView insertFeedback(@RequestParam("name")String name,@RequestParam("position")String position,@RequestParam("feedback")String feedback,@RequestParam("mob")String mob,@RequestParam("mail")String mail)
+	{
+		 ModelAndView mv=new ModelAndView();
+		 Feedback f=new Feedback();
+		 f.setName(name);
+		 f.setPosition(position);
+		 f.setFeedback(feedback);
+		 f.setMob(mob);
+		 f.setMail(mail);
+		int count= admin.insetFeedback(f);
+		 if(count>0)
+		 {
+			 mv.addObject("fmsg","you feedback is successfully send...");
+		 }
+		 else
+		 {
+			 mv.addObject("fmsg","you feedbcak send is failed");
+		 }
+		   mv.setViewName("Contact");
+		 return mv;
+	}
 	//get Admint profile
 	@RequestMapping("/getAdminProfile")
 	public ModelAndView getAdminProfile(HttpSession session)

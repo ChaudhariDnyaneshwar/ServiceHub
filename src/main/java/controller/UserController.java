@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import daointerfaceses.AdminDao;
 import daointerfaceses.DesignationDao;
 import daointerfaceses.EmailGenarateDao;
 import daointerfaceses.ServiceProviderDao;
@@ -30,6 +31,7 @@ import daointerfaceses.ValidationDao;
 import pojoclasses.Appoinment;
 import pojoclasses.Designation;
 import pojoclasses.EmailGenerate;
+import pojoclasses.Feedback;
 import pojoclasses.ServiceProvider;
 import pojoclasses.User;
 import pojoclasses.Validation;
@@ -52,6 +54,11 @@ public class UserController {
 	
 	@Autowired
 	EmailGenarateDao egd;
+	
+	@Autowired
+	AdminDao admin;
+	
+	
 //========================show user profile=====================
 	@RequestMapping("/getUserProfile")
 	public ModelAndView getUserProfile(HttpSession session)

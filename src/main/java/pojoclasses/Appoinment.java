@@ -1,5 +1,8 @@
 package pojoclasses;
 
+import org.springframework.stereotype.Component;
+
+
 public class Appoinment {
 
 	 private String cuname;

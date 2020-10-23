@@ -34,9 +34,6 @@
         <a class="nav-link" href="UserAbout.jsp">About Us</a>
       </li>
       
-      <li class="nav-item">
-        <a class="nav-link" href="UserContact.jsp">Contact</a>
-      </li>
           
     <li class="nav-item">
         <a class="nav-link" href="getDesignation">Services</a>

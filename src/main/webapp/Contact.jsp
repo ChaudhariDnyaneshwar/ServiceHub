@@ -57,7 +57,7 @@
 <div class="division contact" id="contact">
 	<div class="row">
 		<div class="col-lg-6">
-			<div class="map-responsive">
+			<div class="map-responsive" style="margin-top:50px;">
 				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15132.295426137158!2d73.8464113!3d18.5255643!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3f92335c2e5c8400!2sP.E.S.%20Modern%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1602144155328!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>">
 				
 			</div>
@@ -65,13 +65,16 @@
 		<div class="col-sm-6">
 			<form class="text-center" action="insertFeedback">
 				<h1 class="heading1"><u>Get In Touch</u></h1>
-				<input type="text" name="name" class="form-control mb-3" placeholder="user name/Company name">
-				<select class="form-control mb-3" name="position">
+				<input type="text" name="name" class="form-control mb-3" placeholder="user name/Company name" required>
+				<input type="number" name="mob" class="form-control mb-3" placeholder="Enter mobile number" required>
+				<input type="email" name="mail" class="form-control mb-3" placeholder="user email id" required>
+				<select class="form-control mb-3" name="position" required>
 					<option value="user" >User</option>
 					<option value="service provider">Service Provider</option>
 				</select>
-				<textarea class="form-control mb-3"  placeholder="Enter Your Message" cols="10" rows="10" name="feedback"></textarea>
+				<textarea class="form-control mb-3"  placeholder="Enter Your Message" cols="10" rows="8" name="feedback" required></textarea>
 				<button class="btn btn-success btn-lg btn-floating btn-block">Submit</button>
+			<h3>   ${fmsg}</h3>
 			</form>
 
 		</div>
